@@ -20,22 +20,22 @@ export function CTASection() {
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-6">
-            Begin Your Child's Journey to Excellence
+            Comienza el Camino de Tu Hijo Hacia la Excelencia
           </h2>
           <p className="text-lg text-primary-foreground/80 mb-8">
-            Join thousands of families who have trusted Horizon Academy for 
-            their children's education. Applications for the new academic year 
-            are now open.
+            Únete a miles de familias que han confiado en Academia Horizonte para 
+            la educación de sus hijos. Las inscripciones para el nuevo año académico 
+            ya están abiertas.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button variant="hero" size="lg" asChild>
               <Link to="/contact">
-                Apply for Admission
+                Solicitar Inscripción
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button variant="heroOutline" size="lg" asChild>
-              <Link to="/about">Schedule a Visit</Link>
+              <Link to="/about">Agendar una Visita</Link>
             </Button>
           </div>
         </motion.div>

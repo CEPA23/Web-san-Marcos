@@ -11,38 +11,38 @@ import { z } from "zod";
 
 const campuses = [
   {
-    name: "Main Campus",
-    address: "123 Education Boulevard, Downtown, City 12345",
+    name: "Campus Principal",
+    address: "Av. Educación 123, Centro, Ciudad 12345",
     phone: "(555) 123-4567",
-    email: "main@horizonacademy.edu",
-    hours: "Mon-Fri: 7:30 AM - 5:00 PM",
+    email: "principal@academiahorizonte.edu",
+    hours: "Lun-Vie: 7:30 AM - 5:00 PM",
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368459418!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1635959000000!5m2!1sen!2sus",
   },
   {
-    name: "North Campus",
-    address: "456 Academic Way, North District, City 12346",
+    name: "Campus Norte",
+    address: "Calle Académica 456, Zona Norte, Ciudad 12346",
     phone: "(555) 234-5678",
-    email: "north@horizonacademy.edu",
-    hours: "Mon-Fri: 7:30 AM - 5:00 PM",
+    email: "norte@academiahorizonte.edu",
+    hours: "Lun-Vie: 7:30 AM - 5:00 PM",
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.177489855011!2d-73.98823928459277!3d40.757977779326926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1635959100000!5m2!1sen!2sus",
   },
   {
-    name: "West Campus",
-    address: "789 Learning Lane, West Side, City 12347",
+    name: "Campus Oeste",
+    address: "Blvd. del Saber 789, Zona Oeste, Ciudad 12347",
     phone: "(555) 345-6789",
-    email: "west@horizonacademy.edu",
-    hours: "Mon-Fri: 7:30 AM - 5:00 PM",
+    email: "oeste@academiahorizonte.edu",
+    hours: "Lun-Vie: 7:30 AM - 5:00 PM",
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.2772247058793!2d-74.04668368459362!3d40.73379787933001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sExchange%20Place!5e0!3m2!1sen!2sus!4v1635959200000!5m2!1sen!2sus",
   },
 ];
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
-  phone: z.string().trim().max(20, "Phone must be less than 20 characters").optional(),
-  campus: z.string().min(1, "Please select a campus"),
-  subject: z.string().trim().min(1, "Subject is required").max(200, "Subject must be less than 200 characters"),
-  message: z.string().trim().min(10, "Message must be at least 10 characters").max(2000, "Message must be less than 2000 characters"),
+  name: z.string().trim().min(1, "El nombre es requerido").max(100, "El nombre debe tener menos de 100 caracteres"),
+  email: z.string().trim().email("Correo electrónico inválido").max(255, "El correo debe tener menos de 255 caracteres"),
+  phone: z.string().trim().max(20, "El teléfono debe tener menos de 20 caracteres").optional(),
+  campus: z.string().min(1, "Por favor selecciona un campus"),
+  subject: z.string().trim().min(1, "El asunto es requerido").max(200, "El asunto debe tener menos de 200 caracteres"),
+  message: z.string().trim().min(10, "El mensaje debe tener al menos 10 caracteres").max(2000, "El mensaje debe tener menos de 2000 caracteres"),
 });
 
 const Contact = () => {
@@ -81,8 +81,8 @@ const Contact = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you within 24-48 hours.",
+      title: "¡Mensaje Enviado!",
+      description: "Gracias por contactarnos. Te responderemos en 24-48 horas.",
     });
     
     setFormData({
@@ -107,11 +107,11 @@ const Contact = () => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Contact Us
+              Contáctanos
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Have questions about admissions, programs, or visiting our campuses? 
-              We're here to help. Reach out and we'll respond within 24-48 hours.
+              ¿Tienes preguntas sobre admisiones, programas o visitas a nuestros campus? 
+              Estamos aquí para ayudarte. Contáctanos y te responderemos en 24-48 horas.
             </p>
           </motion.div>
         </div>
@@ -127,19 +127,19 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
             >
               <h2 className="text-2xl font-bold text-foreground mb-6">
-                Send Us a Message
+                Envíanos un Mensaje
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                      Full Name *
+                      Nombre Completo *
                     </label>
                     <Input
                       id="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="John Smith"
+                      placeholder="Juan Pérez"
                       className={errors.name ? "border-destructive" : ""}
                     />
                     {errors.name && (
@@ -148,14 +148,14 @@ const Contact = () => {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Email Address *
+                      Correo Electrónico *
                     </label>
                     <Input
                       id="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="john@example.com"
+                      placeholder="juan@ejemplo.com"
                       className={errors.email ? "border-destructive" : ""}
                     />
                     {errors.email && (
@@ -167,7 +167,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                      Phone Number
+                      Número de Teléfono
                     </label>
                     <Input
                       id="phone"
@@ -189,13 +189,13 @@ const Contact = () => {
                         errors.campus ? "border-destructive" : "border-input"
                       }`}
                     >
-                      <option value="">Select a campus</option>
+                      <option value="">Selecciona un campus</option>
                       {campuses.map((campus) => (
                         <option key={campus.name} value={campus.name}>
                           {campus.name}
                         </option>
                       ))}
-                      <option value="General">General Inquiry</option>
+                      <option value="General">Consulta General</option>
                     </select>
                     {errors.campus && (
                       <p className="text-sm text-destructive mt-1">{errors.campus}</p>
@@ -205,13 +205,13 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                    Subject *
+                    Asunto *
                   </label>
                   <Input
                     id="subject"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="Admissions inquiry for Fall 2026"
+                    placeholder="Consulta de admisiones para Otoño 2026"
                     className={errors.subject ? "border-destructive" : ""}
                   />
                   {errors.subject && (
@@ -221,13 +221,13 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Message *
+                    Mensaje *
                   </label>
                   <Textarea
                     id="message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Please provide details about your inquiry..."
+                    placeholder="Por favor proporciona detalles sobre tu consulta..."
                     rows={5}
                     className={errors.message ? "border-destructive" : ""}
                   />
@@ -237,7 +237,7 @@ const Contact = () => {
                 </div>
 
                 <Button type="submit" variant="hero" size="lg" disabled={isSubmitting}>
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
                   <Send className="ml-2 h-5 w-5" />
                 </Button>
               </form>
@@ -250,7 +250,7 @@ const Contact = () => {
               className="space-y-6"
             >
               <h2 className="text-2xl font-bold text-foreground mb-6">
-                Our Campuses
+                Nuestros Campus
               </h2>
               {campuses.map((campus) => (
                 <Card key={campus.name} className="card-hover">
@@ -290,7 +290,7 @@ const Contact = () => {
       <section className="bg-secondary">
         <div className="container-custom py-12">
           <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
-            Find Us
+            Encuéntranos
           </h2>
           <div className="aspect-[21/9] rounded-2xl overflow-hidden shadow-elevated">
             <iframe
@@ -301,7 +301,7 @@ const Contact = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Main Campus Location"
+              title="Ubicación del Campus Principal"
             />
           </div>
         </div>

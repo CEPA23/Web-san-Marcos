@@ -5,61 +5,61 @@ import { Clock, ArrowRight } from "lucide-react";
 const news = [
   {
     id: 1,
-    title: "New STEM Lab Opens at North Campus",
-    excerpt: "State-of-the-art facilities for robotics, coding, and scientific research now available for all students. The new lab features 3D printers, programming stations, and advanced scientific equipment.",
-    content: "We are thrilled to announce the opening of our new STEM Lab at North Campus...",
-    date: "January 28, 2026",
-    category: "Facilities",
+    title: "Nuevo Laboratorio STEM Abre en Campus Norte",
+    excerpt: "Instalaciones de última generación para robótica, programación e investigación científica ahora disponibles para todos los estudiantes. El nuevo laboratorio cuenta con impresoras 3D, estaciones de programación y equipamiento científico avanzado.",
+    content: "Estamos emocionados de anunciar la apertura de nuestro nuevo Laboratorio STEM en el Campus Norte...",
+    date: "28 de Enero, 2026",
+    category: "Instalaciones",
     featured: true,
   },
   {
     id: 2,
-    title: "Admission Applications Now Open for 2025-2026",
-    excerpt: "Begin your application for the upcoming academic year. Early registration discounts and sibling benefits available for families who apply before March 31st.",
-    date: "January 25, 2026",
-    category: "Admissions",
+    title: "Inscripciones Abiertas para el Ciclo 2025-2026",
+    excerpt: "Comienza tu solicitud para el próximo año académico. Descuentos por inscripción temprana y beneficios para hermanos disponibles para familias que apliquen antes del 31 de marzo.",
+    date: "25 de Enero, 2026",
+    category: "Admisiones",
   },
   {
     id: 3,
-    title: "Students Win Regional Math Olympics",
-    excerpt: "Our students secured 1st place in the Regional Mathematics Olympiad, qualifying for the national competition. Congratulations to our talented mathematicians!",
-    date: "January 20, 2026",
-    category: "Achievement",
+    title: "Estudiantes Ganan Olimpiada Regional de Matemáticas",
+    excerpt: "Nuestros estudiantes obtuvieron el 1er lugar en la Olimpiada Regional de Matemáticas, clasificando para la competencia nacional. ¡Felicidades a nuestros talentosos matemáticos!",
+    date: "20 de Enero, 2026",
+    category: "Logros",
   },
   {
     id: 4,
-    title: "New After-School Programs Launched",
-    excerpt: "Expanded extracurricular offerings including coding club, debate team, and environmental science club now available for middle and high school students.",
-    date: "January 15, 2026",
-    category: "Programs",
+    title: "Nuevos Programas Extracurriculares",
+    excerpt: "Ofertas extracurriculares ampliadas incluyendo club de programación, equipo de debate y club de ciencias ambientales ahora disponibles para estudiantes de secundaria y preparatoria.",
+    date: "15 de Enero, 2026",
+    category: "Programas",
   },
   {
     id: 5,
-    title: "Principal's Message: Welcome to the New Year",
-    excerpt: "A message from Principal Dr. Sarah Mitchell on our achievements in 2025 and our vision for the coming year. Together, we continue to build a brighter future.",
-    date: "January 5, 2026",
-    category: "Leadership",
+    title: "Mensaje del Director: Bienvenida al Nuevo Año",
+    excerpt: "Un mensaje del Director Dr. Carlos Rodríguez sobre nuestros logros en 2025 y nuestra visión para el año entrante. Juntos, continuamos construyendo un futuro más brillante.",
+    date: "5 de Enero, 2026",
+    category: "Liderazgo",
   },
   {
     id: 6,
-    title: "Winter Concert Series a Huge Success",
-    excerpt: "Over 500 families attended our Winter Concert series featuring performances from students across all grade levels. Thank you for your wonderful support!",
-    date: "December 18, 2025",
-    category: "Arts",
+    title: "Serie de Conciertos de Invierno Fue un Gran Éxito",
+    excerpt: "Más de 500 familias asistieron a nuestra serie de Conciertos de Invierno con presentaciones de estudiantes de todos los niveles. ¡Gracias por su maravilloso apoyo!",
+    date: "18 de Diciembre, 2025",
+    category: "Artes",
   },
   {
     id: 7,
-    title: "Community Service Day: Making a Difference",
-    excerpt: "Students and staff participated in our annual Community Service Day, volunteering at local food banks, shelters, and environmental cleanup initiatives.",
-    date: "December 10, 2025",
-    category: "Community",
+    title: "Día de Servicio Comunitario: Haciendo la Diferencia",
+    excerpt: "Estudiantes y personal participaron en nuestro Día Anual de Servicio Comunitario, como voluntarios en bancos de alimentos locales, albergues e iniciativas de limpieza ambiental.",
+    date: "10 de Diciembre, 2025",
+    category: "Comunidad",
   },
   {
     id: 8,
-    title: "Sports Teams Excel in Fall Season",
-    excerpt: "Our soccer, volleyball, and cross-country teams achieved outstanding results this season, with multiple conference championships and individual awards.",
-    date: "November 28, 2025",
-    category: "Sports",
+    title: "Equipos Deportivos Destacan en Temporada de Otoño",
+    excerpt: "Nuestros equipos de fútbol, voleibol y campo traviesa lograron resultados sobresalientes esta temporada, con múltiples campeonatos de conferencia y premios individuales.",
+    date: "28 de Noviembre, 2025",
+    category: "Deportes",
   },
 ];
 
@@ -91,11 +91,11 @@ const News = () => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              News & Announcements
+              Noticias y Anuncios
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Stay informed with the latest updates, announcements, and stories 
-              from Horizon Academy.
+              Mantente informado con las últimas actualizaciones, anuncios e historias 
+              de Academia Horizonte.
             </p>
           </motion.div>
         </div>
@@ -111,7 +111,7 @@ const News = () => {
               className="bg-primary rounded-2xl p-8 md:p-12 text-primary-foreground"
             >
               <span className="inline-block px-4 py-1 mb-6 text-sm font-medium rounded-full gold-gradient text-foreground">
-                Featured
+                Destacado
               </span>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
                 {featuredNews.title}
@@ -167,7 +167,7 @@ const News = () => {
                     </p>
                   </div>
                   <button className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors lg:shrink-0">
-                    Read More
+                    Leer Más
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>

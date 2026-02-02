@@ -20,20 +20,20 @@ interface GalleryImage {
 }
 
 const galleryImages: GalleryImage[] = [
-  { id: 1, src: heroCampusImage, alt: "Main Campus Exterior", category: "campus" },
-  { id: 2, src: classroomImage, alt: "Classroom Learning", category: "academics" },
-  { id: 3, src: scienceFairImage, alt: "Science Fair Exhibition", category: "events" },
-  { id: 4, src: sportsImage, alt: "Soccer Team Practice", category: "sports" },
-  { id: 5, src: graduationImage, alt: "Graduation Ceremony", category: "events" },
-  { id: 6, src: libraryImage, alt: "Library Study Area", category: "campus" },
+  { id: 1, src: heroCampusImage, alt: "Exterior del Campus Principal", category: "campus" },
+  { id: 2, src: classroomImage, alt: "Aprendizaje en el Aula", category: "academics" },
+  { id: 3, src: scienceFairImage, alt: "Feria de Ciencias", category: "events" },
+  { id: 4, src: sportsImage, alt: "Práctica del Equipo de Fútbol", category: "sports" },
+  { id: 5, src: graduationImage, alt: "Ceremonia de Graduación", category: "events" },
+  { id: 6, src: libraryImage, alt: "Área de Estudio en Biblioteca", category: "campus" },
 ];
 
 const categories = [
-  { value: "all", label: "All Photos" },
+  { value: "all", label: "Todas las Fotos" },
   { value: "campus", label: "Campus" },
-  { value: "academics", label: "Academics" },
-  { value: "sports", label: "Sports" },
-  { value: "events", label: "Events" },
+  { value: "academics", label: "Académico" },
+  { value: "sports", label: "Deportes" },
+  { value: "events", label: "Eventos" },
 ];
 
 const container = {
@@ -68,11 +68,11 @@ const Gallery = () => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Photo Gallery
+              Galería de Fotos
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Explore moments from our campuses, classrooms, events, and activities 
-              that make Horizon Academy special.
+              Explora momentos de nuestros campus, aulas, eventos y actividades 
+              que hacen especial a Academia Horizonte.
             </p>
           </motion.div>
         </div>
@@ -126,7 +126,7 @@ const Gallery = () => {
 
           {filteredImages.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No photos found in this category.</p>
+              <p className="text-muted-foreground">No se encontraron fotos en esta categoría.</p>
             </div>
           )}
         </div>

@@ -4,33 +4,33 @@ import { GraduationCap, Users, Trophy, BookOpen, Globe, Heart } from "lucide-rea
 const features = [
   {
     icon: GraduationCap,
-    title: "Academic Excellence",
-    description: "Rigorous curriculum designed to challenge and inspire students to reach their full potential.",
+    title: "Excelencia Académica",
+    description: "Currículo riguroso diseñado para desafiar e inspirar a los estudiantes a alcanzar su máximo potencial.",
   },
   {
     icon: Users,
-    title: "Experienced Faculty",
-    description: "Dedicated teachers with advanced degrees and a passion for nurturing young minds.",
+    title: "Docentes Experimentados",
+    description: "Maestros dedicados con títulos avanzados y pasión por formar jóvenes mentes.",
   },
   {
     icon: Trophy,
-    title: "Extracurricular Programs",
-    description: "Diverse activities from sports to arts, fostering well-rounded development.",
+    title: "Programas Extracurriculares",
+    description: "Actividades diversas desde deportes hasta artes, fomentando el desarrollo integral.",
   },
   {
     icon: BookOpen,
-    title: "Modern Facilities",
-    description: "State-of-the-art labs, libraries, and learning spaces across all campuses.",
+    title: "Instalaciones Modernas",
+    description: "Laboratorios de última generación, bibliotecas y espacios de aprendizaje en todos los campus.",
   },
   {
     icon: Globe,
-    title: "Global Perspective",
-    description: "International exchange programs and multicultural education experiences.",
+    title: "Perspectiva Global",
+    description: "Programas de intercambio internacional y experiencias educativas multiculturales.",
   },
   {
     icon: Heart,
-    title: "Character Development",
-    description: "Values-based education emphasizing integrity, respect, and community service.",
+    title: "Formación en Valores",
+    description: "Educación basada en valores que enfatiza integridad, respeto y servicio comunitario.",
   },
 ];
 
@@ -58,11 +58,11 @@ export function WhyChooseUsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Why Choose Horizon Academy?
+            ¿Por Qué Elegir Academia Horizonte?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We combine academic rigor with a nurturing environment to prepare 
-            students for success in an ever-changing world.
+            Combinamos rigor académico con un ambiente acogedor para preparar 
+            a los estudiantes para el éxito en un mundo en constante cambio.
           </p>
         </motion.div>
 

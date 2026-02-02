@@ -11,7 +11,7 @@ export function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={heroCampus}
-          alt="Horizon Academy Campus"
+          alt="Campus Academia Horizonte"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 hero-gradient" />
@@ -26,7 +26,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-block px-4 py-2 mb-6 text-sm font-medium rounded-full bg-accent/20 text-primary-foreground backdrop-blur-sm"
           >
-            Admissions Open for 2025-2026
+            Inscripciones Abiertas 2025-2026
           </motion.span>
           
           <motion.h1
@@ -35,8 +35,8 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
           >
-            Shaping Tomorrow's{" "}
-            <span className="text-accent">Leaders</span> Today
+            Formando a los{" "}
+            <span className="text-accent">Líderes</span> del Mañana
           </motion.h1>
           
           <motion.p
@@ -45,9 +45,9 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg sm:text-xl text-primary-foreground/90 mb-8 leading-relaxed max-w-2xl"
           >
-            At Horizon Academy, we nurture curious minds, build strong character, and 
-            inspire lifelong learning across our three campuses. Join a community 
-            committed to academic excellence and holistic development.
+            En Academia Horizonte, cultivamos mentes curiosas, forjamos carácter sólido e 
+            inspiramos el aprendizaje para toda la vida en nuestros tres campus. Únete a una 
+            comunidad comprometida con la excelencia académica y el desarrollo integral.
           </motion.p>
           
           <motion.div
@@ -58,12 +58,12 @@ export function HeroSection() {
           >
             <Button variant="hero" size="xl" asChild>
               <Link to="/contact">
-                Start Your Journey
+                Comienza Tu Camino
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
-              <Link to="/about">Learn More</Link>
+              <Link to="/about">Conoce Más</Link>
             </Button>
           </motion.div>
 
@@ -75,9 +75,9 @@ export function HeroSection() {
             className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 max-w-lg"
           >
             {[
-              { value: "40+", label: "Years of Excellence" },
-              { value: "3", label: "Campuses" },
-              { value: "5,000+", label: "Students" },
+              { value: "40+", label: "Años de Excelencia" },
+              { value: "3", label: "Campus" },
+              { value: "5,000+", label: "Estudiantes" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="text-3xl font-bold text-accent">{stat.value}</div>

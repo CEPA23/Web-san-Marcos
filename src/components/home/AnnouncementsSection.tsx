@@ -6,24 +6,24 @@ import { Button } from "@/components/ui/button";
 const announcements = [
   {
     id: 1,
-    title: "New STEM Lab Opens at North Campus",
-    excerpt: "State-of-the-art facilities for robotics, coding, and scientific research now available for all students.",
-    date: "January 28, 2026",
-    category: "Facilities",
+    title: "Nuevo Laboratorio STEM Abre en Campus Norte",
+    excerpt: "Instalaciones de última generación para robótica, programación e investigación científica ahora disponibles para todos los estudiantes.",
+    date: "28 de Enero, 2026",
+    category: "Instalaciones",
   },
   {
     id: 2,
-    title: "Admission Applications Now Open",
-    excerpt: "Begin your application for the 2025-2026 academic year. Early registration discounts available.",
-    date: "January 25, 2026",
-    category: "Admissions",
+    title: "Inscripciones Abiertas",
+    excerpt: "Comienza tu solicitud para el año académico 2025-2026. Descuentos por inscripción temprana disponibles.",
+    date: "25 de Enero, 2026",
+    category: "Admisiones",
   },
   {
     id: 3,
-    title: "Students Win Regional Math Olympics",
-    excerpt: "Our students secured 1st place in the Regional Mathematics Olympiad, qualifying for nationals.",
-    date: "January 20, 2026",
-    category: "Achievement",
+    title: "Estudiantes Ganan Olimpiada Regional de Matemáticas",
+    excerpt: "Nuestros estudiantes obtuvieron el 1er lugar en la Olimpiada Regional de Matemáticas, clasificando para la competencia nacional.",
+    date: "20 de Enero, 2026",
+    category: "Logros",
   },
 ];
 
@@ -52,15 +52,15 @@ export function AnnouncementsSection() {
         >
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
-              Latest Announcements
+              Últimos Anuncios
             </h2>
             <p className="text-muted-foreground">
-              Important updates from Horizon Academy
+              Actualizaciones importantes de Academia Horizonte
             </p>
           </div>
           <Button variant="outline" asChild>
             <Link to="/news">
-              All News
+              Todas las Noticias
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -99,7 +99,7 @@ export function AnnouncementsSection() {
                   to="/news"
                   className="text-sm font-medium text-primary hover:text-primary/80 flex items-center gap-1 transition-colors"
                 >
-                  Read More
+                  Leer Más
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
