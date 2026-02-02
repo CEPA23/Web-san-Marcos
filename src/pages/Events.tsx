@@ -21,86 +21,86 @@ interface Event {
 const events: Event[] = [
   {
     id: 1,
-    title: "Open House Day",
-    date: "February 15, 2026",
+    title: "Día de Puertas Abiertas",
+    date: "15 de Febrero, 2026",
     time: "9:00 AM - 3:00 PM",
-    campus: "All Campuses",
+    campus: "Todos los Campus",
     category: "community",
-    description: "Explore our facilities and meet our dedicated faculty. Campus tours, information sessions, and Q&A available throughout the day.",
+    description: "Explora nuestras instalaciones y conoce a nuestro dedicado cuerpo docente. Tours del campus, sesiones informativas y preguntas y respuestas disponibles todo el día.",
     featured: true,
   },
   {
     id: 2,
-    title: "Spring Music Concert",
-    date: "March 8, 2026",
+    title: "Concierto de Primavera",
+    date: "8 de Marzo, 2026",
     time: "6:00 PM - 8:00 PM",
-    campus: "Main Campus",
+    campus: "Campus Principal",
     category: "arts",
-    description: "Annual showcase featuring performances from students across all grade levels including choir, orchestra, and band.",
+    description: "Muestra anual con presentaciones de estudiantes de todos los niveles incluyendo coro, orquesta y banda.",
   },
   {
     id: 3,
-    title: "Science Fair Exhibition",
-    date: "March 22, 2026",
+    title: "Feria de Ciencias",
+    date: "22 de Marzo, 2026",
     time: "10:00 AM - 4:00 PM",
-    campus: "North Campus",
+    campus: "Campus Norte",
     category: "academic",
-    description: "Students present innovative science projects competing for regional finals. Open to all families.",
+    description: "Los estudiantes presentan proyectos científicos innovadores compitiendo por las finales regionales. Abierto a todas las familias.",
   },
   {
     id: 4,
-    title: "Parent-Teacher Conference",
-    date: "April 5, 2026",
+    title: "Reunión de Padres y Maestros",
+    date: "5 de Abril, 2026",
     time: "2:00 PM - 7:00 PM",
-    campus: "All Campuses",
+    campus: "Todos los Campus",
     category: "academic",
-    description: "Schedule meetings with teachers to discuss student progress, goals, and strategies for continued success.",
+    description: "Agenda reuniones con los maestros para hablar sobre el progreso, metas y estrategias para el éxito continuo de los estudiantes.",
   },
   {
     id: 5,
-    title: "Inter-School Basketball Tournament",
-    date: "April 12, 2026",
+    title: "Torneo Interescolar de Básquetbol",
+    date: "12 de Abril, 2026",
     time: "8:00 AM - 6:00 PM",
-    campus: "West Campus",
+    campus: "Campus Oeste",
     category: "sports",
-    description: "Our varsity teams compete against schools from across the region. Come cheer on our Eagles!",
+    description: "Nuestros equipos varsity compiten contra escuelas de toda la región. ¡Ven a apoyar a nuestras Águilas!",
   },
   {
     id: 6,
-    title: "Spring Art Exhibition",
-    date: "April 20, 2026",
+    title: "Exposición de Arte de Primavera",
+    date: "20 de Abril, 2026",
     time: "3:00 PM - 7:00 PM",
-    campus: "Main Campus",
+    campus: "Campus Principal",
     category: "arts",
-    description: "Student artwork from all grade levels on display. Reception with refreshments.",
+    description: "Obras de arte de estudiantes de todos los niveles en exhibición. Recepción con refrigerios.",
   },
   {
     id: 7,
-    title: "Annual Athletics Day",
-    date: "May 5, 2026",
+    title: "Día Anual de Atletismo",
+    date: "5 de Mayo, 2026",
     time: "8:00 AM - 4:00 PM",
-    campus: "All Campuses",
+    campus: "Todos los Campus",
     category: "sports",
-    description: "A day of friendly competition featuring track events, team sports, and recreational activities.",
+    description: "Un día de competencia amistosa con eventos de pista, deportes en equipo y actividades recreativas.",
   },
   {
     id: 8,
-    title: "Graduation Ceremony",
-    date: "June 15, 2026",
+    title: "Ceremonia de Graduación",
+    date: "15 de Junio, 2026",
     time: "10:00 AM - 12:00 PM",
-    campus: "Main Campus",
+    campus: "Campus Principal",
     category: "community",
-    description: "Celebrate our graduating class as they embark on the next chapter of their journey.",
+    description: "Celebra a nuestra generación graduada mientras emprenden el siguiente capítulo de su viaje.",
     featured: true,
   },
 ];
 
 const categories = [
-  { value: "all", label: "All Events" },
-  { value: "academic", label: "Academic" },
-  { value: "sports", label: "Sports" },
-  { value: "arts", label: "Arts" },
-  { value: "community", label: "Community" },
+  { value: "all", label: "Todos los Eventos" },
+  { value: "academic", label: "Académico" },
+  { value: "sports", label: "Deportes" },
+  { value: "arts", label: "Artes" },
+  { value: "community", label: "Comunidad" },
 ];
 
 const container = {
@@ -134,11 +134,11 @@ const Events = () => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              School Events
+              Eventos Escolares
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Stay connected with upcoming events, activities, and celebrations 
-              across all our campuses.
+              Mantente conectado con los próximos eventos, actividades y celebraciones 
+              en todos nuestros campus.
             </p>
           </motion.div>
         </div>
@@ -180,11 +180,13 @@ const Events = () => {
                   <CardContent className="p-6 flex flex-col h-full">
                     {event.featured && (
                       <span className="inline-block self-start px-3 py-1 mb-4 text-xs font-semibold rounded-full gold-gradient text-foreground">
-                        Featured
+                        Destacado
                       </span>
                     )}
                     <span className="text-xs font-medium text-primary uppercase tracking-wider mb-2">
-                      {event.category}
+                      {event.category === "academic" ? "Académico" : 
+                       event.category === "sports" ? "Deportes" :
+                       event.category === "arts" ? "Artes" : "Comunidad"}
                     </span>
                     <h3 className="text-xl font-semibold text-foreground mb-3">
                       {event.title}
@@ -214,7 +216,7 @@ const Events = () => {
 
           {filteredEvents.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No events found in this category.</p>
+              <p className="text-muted-foreground">No se encontraron eventos en esta categoría.</p>
             </div>
           )}
         </div>

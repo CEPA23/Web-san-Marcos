@@ -7,34 +7,34 @@ import { Card, CardContent } from "@/components/ui/card";
 const events = [
   {
     id: 1,
-    title: "Open House Day",
-    date: "February 15, 2026",
-    campus: "All Campuses",
-    description: "Explore our facilities and meet our dedicated faculty. Campus tours available throughout the day.",
+    title: "Día de Puertas Abiertas",
+    date: "15 de Febrero, 2026",
+    campus: "Todos los Campus",
+    description: "Explora nuestras instalaciones y conoce a nuestro dedicado cuerpo docente. Tours del campus disponibles todo el día.",
     featured: true,
   },
   {
     id: 2,
-    title: "Spring Music Concert",
-    date: "March 8, 2026",
-    campus: "Main Campus",
-    description: "Annual showcase featuring performances from students across all grade levels.",
+    title: "Concierto de Primavera",
+    date: "8 de Marzo, 2026",
+    campus: "Campus Principal",
+    description: "Muestra anual con presentaciones de estudiantes de todos los niveles escolares.",
     featured: false,
   },
   {
     id: 3,
-    title: "Science Fair Exhibition",
-    date: "March 22, 2026",
-    campus: "North Campus",
-    description: "Students present innovative science projects competing for regional finals.",
+    title: "Feria de Ciencias",
+    date: "22 de Marzo, 2026",
+    campus: "Campus Norte",
+    description: "Los estudiantes presentan proyectos científicos innovadores compitiendo por las finales regionales.",
     featured: false,
   },
   {
     id: 4,
-    title: "Parent-Teacher Conference",
-    date: "April 5, 2026",
-    campus: "All Campuses",
-    description: "Schedule meetings with teachers to discuss student progress and goals.",
+    title: "Reunión de Padres y Maestros",
+    date: "5 de Abril, 2026",
+    campus: "Todos los Campus",
+    description: "Agenda reuniones con los maestros para hablar sobre el progreso y metas de los estudiantes.",
     featured: false,
   },
 ];
@@ -64,15 +64,15 @@ export function EventsSection() {
         >
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
-              Upcoming Events
+              Próximos Eventos
             </h2>
             <p className="text-muted-foreground">
-              Stay connected with our school community
+              Mantente conectado con nuestra comunidad escolar
             </p>
           </div>
           <Button variant="outline" asChild>
             <Link to="/events">
-              View All Events
+              Ver Todos los Eventos
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -91,7 +91,7 @@ export function EventsSection() {
                 <CardContent className="p-6 flex flex-col h-full">
                   {event.featured && (
                     <span className="inline-block self-start px-3 py-1 mb-4 text-xs font-semibold rounded-full gold-gradient text-foreground">
-                      Featured
+                      Destacado
                     </span>
                   )}
                   <h3 className="text-lg font-semibold text-foreground mb-3">

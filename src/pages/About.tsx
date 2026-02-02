@@ -8,42 +8,42 @@ import classroomImage from "@/assets/classroom.jpg";
 const values = [
   {
     icon: Target,
-    title: "Excellence",
-    description: "We pursue the highest standards in academic achievement and personal growth.",
+    title: "Excelencia",
+    description: "Perseguimos los más altos estándares en logros académicos y crecimiento personal.",
   },
   {
     icon: Heart,
-    title: "Integrity",
-    description: "We uphold honesty, ethical behavior, and accountability in all we do.",
+    title: "Integridad",
+    description: "Mantenemos la honestidad, el comportamiento ético y la responsabilidad en todo lo que hacemos.",
   },
   {
     icon: Users,
-    title: "Community",
-    description: "We foster a supportive environment where every member belongs and thrives.",
+    title: "Comunidad",
+    description: "Fomentamos un ambiente de apoyo donde cada miembro pertenece y prospera.",
   },
 ];
 
 const campuses = [
   {
-    name: "Main Campus",
+    name: "Campus Principal",
     grades: "K-12",
     students: "2,000+",
-    address: "123 Education Boulevard, Downtown",
-    description: "Our flagship campus featuring comprehensive facilities for all grade levels.",
+    address: "Av. Educación 123, Centro",
+    description: "Nuestro campus insignia con instalaciones completas para todos los niveles escolares.",
   },
   {
-    name: "North Campus",
+    name: "Campus Norte",
     grades: "K-8",
     students: "1,500+",
-    address: "456 Academic Way, North District",
-    description: "A modern facility focused on elementary and middle school education.",
+    address: "Calle Académica 456, Zona Norte",
+    description: "Una instalación moderna enfocada en educación primaria y secundaria.",
   },
   {
-    name: "West Campus",
+    name: "Campus Oeste",
     grades: "9-12",
     students: "1,200+",
-    address: "789 Learning Lane, West Side",
-    description: "Specialized high school campus with advanced STEM and arts programs.",
+    address: "Blvd. del Saber 789, Zona Oeste",
+    description: "Campus especializado en preparatoria con programas avanzados de STEM y artes.",
   },
 ];
 
@@ -72,11 +72,11 @@ const About = () => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              About Horizon Academy
+              Acerca de Academia Horizonte
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Since 1985, Horizon Academy has been dedicated to nurturing young minds 
-              and preparing students for a lifetime of learning and leadership.
+              Desde 1985, Academia Horizonte se ha dedicado a formar jóvenes mentes 
+              y preparar estudiantes para una vida de aprendizaje y liderazgo.
             </p>
           </motion.div>
         </div>
@@ -93,7 +93,7 @@ const About = () => {
             >
               <img
                 src={libraryImage}
-                alt="Horizon Academy Library"
+                alt="Biblioteca Academia Horizonte"
                 className="rounded-2xl shadow-elevated"
               />
             </motion.div>
@@ -108,12 +108,12 @@ const About = () => {
                   <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Target className="h-6 w-6 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-foreground">Our Mission</h2>
+                  <h2 className="text-2xl font-bold text-foreground">Nuestra Misión</h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  To provide an exceptional educational experience that empowers students 
-                  to become thoughtful, innovative, and responsible global citizens through 
-                  rigorous academics, character development, and community engagement.
+                  Proporcionar una experiencia educativa excepcional que empodere a los estudiantes 
+                  para convertirse en ciudadanos globales reflexivos, innovadores y responsables a través 
+                  de rigurosos académicos, desarrollo del carácter y compromiso comunitario.
                 </p>
               </div>
               <div>
@@ -121,12 +121,12 @@ const About = () => {
                   <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Eye className="h-6 w-6 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-foreground">Our Vision</h2>
+                  <h2 className="text-2xl font-bold text-foreground">Nuestra Visión</h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  To be recognized as a leading institution in holistic education, 
-                  inspiring a love of learning and cultivating leaders who make 
-                  meaningful contributions to society.
+                  Ser reconocidos como una institución líder en educación integral, 
+                  inspirando el amor por el aprendizaje y cultivando líderes que hacen 
+                  contribuciones significativas a la sociedad.
                 </p>
               </div>
             </motion.div>
@@ -144,10 +144,10 @@ const About = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Our Core Values
+              Nuestros Valores Fundamentales
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              The principles that guide everything we do at Horizon Academy
+              Los principios que guían todo lo que hacemos en Academia Horizonte
             </p>
           </motion.div>
 
@@ -188,24 +188,24 @@ const About = () => {
               className="order-2 lg:order-1"
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Our Story
+                Nuestra Historia
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Founded in 1985 by a group of dedicated educators, Horizon Academy 
-                  began as a small school with a big vision: to create an educational 
-                  environment where every child could thrive.
+                  Fundada en 1985 por un grupo de educadores dedicados, Academia Horizonte 
+                  comenzó como una pequeña escuela con una gran visión: crear un entorno 
+                  educativo donde cada niño pudiera prosperar.
                 </p>
                 <p>
-                  Over the past four decades, we have grown from a single classroom 
-                  of 30 students to a multi-campus institution serving over 5,000 
-                  students annually. Our alumni have gone on to become leaders in 
-                  medicine, law, technology, arts, and public service.
+                  Durante las últimas cuatro décadas, hemos crecido de un solo salón 
+                  de 30 estudiantes a una institución multicampus que atiende a más de 5,000 
+                  estudiantes anualmente. Nuestros egresados se han convertido en líderes en 
+                  medicina, derecho, tecnología, artes y servicio público.
                 </p>
                 <p>
-                  Today, Horizon Academy continues to evolve, embracing innovative 
-                  teaching methods while staying true to our founding principles of 
-                  excellence, integrity, and community.
+                  Hoy, Academia Horizonte continúa evolucionando, adoptando métodos 
+                  de enseñanza innovadores mientras nos mantenemos fieles a nuestros principios 
+                  fundadores de excelencia, integridad y comunidad.
                 </p>
               </div>
             </motion.div>
@@ -217,7 +217,7 @@ const About = () => {
             >
               <img
                 src={classroomImage}
-                alt="Classroom learning"
+                alt="Aprendizaje en el aula"
                 className="rounded-2xl shadow-elevated"
               />
             </motion.div>
@@ -235,10 +235,10 @@ const About = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Our Campuses
+              Nuestros Campus
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Three modern facilities designed for optimal learning experiences
+              Tres instalaciones modernas diseñadas para experiencias de aprendizaje óptimas
             </p>
           </motion.div>
 
@@ -262,14 +262,14 @@ const About = () => {
                           {campus.name}
                         </h3>
                         <p className="text-sm text-muted-foreground">
-                          Grades {campus.grades}
+                          Grados {campus.grades}
                         </p>
                       </div>
                     </div>
                     <p className="text-muted-foreground mb-4">{campus.description}</p>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                       <Users className="h-4 w-4 text-accent" />
-                      <span>{campus.students} Students</span>
+                      <span>{campus.students} Estudiantes</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm text-muted-foreground">
                       <MapPin className="h-4 w-4 text-accent mt-0.5" />

@@ -5,12 +5,12 @@ import { Menu, X, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Events", path: "/events" },
-  { name: "News", path: "/news" },
-  { name: "Gallery", path: "/gallery" },
-  { name: "Contact", path: "/contact" },
+  { name: "Inicio", path: "/" },
+  { name: "Nosotros", path: "/about" },
+  { name: "Eventos", path: "/events" },
+  { name: "Noticias", path: "/news" },
+  { name: "Galería", path: "/gallery" },
+  { name: "Contacto", path: "/contact" },
 ];
 
 export function Header() {
@@ -28,10 +28,10 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold text-foreground">
-                Horizon Academy
+                Academia Horizonte
               </span>
               <span className="text-xs text-muted-foreground">
-                Excellence in Education
+                Excelencia en Educación
               </span>
             </div>
           </Link>
@@ -56,10 +56,10 @@ export function Header() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <Button variant="outline" size="sm" asChild>
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">Contáctanos</Link>
             </Button>
             <Button variant="hero" size="sm" asChild>
-              <Link to="/contact">Apply Now</Link>
+              <Link to="/contact">Inscríbete</Link>
             </Button>
           </div>
 
@@ -67,7 +67,7 @@ export function Header() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-foreground hover:bg-muted rounded-md transition-colors"
-            aria-label="Toggle menu"
+            aria-label="Abrir menú"
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -100,12 +100,12 @@ export function Header() {
                 <div className="flex gap-3 pt-4 px-4">
                   <Button variant="outline" size="sm" className="flex-1" asChild>
                     <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                      Contact
+                      Contacto
                     </Link>
                   </Button>
                   <Button variant="hero" size="sm" className="flex-1" asChild>
                     <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                      Apply Now
+                      Inscríbete
                     </Link>
                   </Button>
                 </div>

@@ -3,28 +3,28 @@ import { GraduationCap, MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtu
 
 const campuses = [
   {
-    name: "Main Campus",
-    address: "123 Education Boulevard, Downtown",
+    name: "Campus Principal",
+    address: "Av. Educación 123, Centro",
     phone: "(555) 123-4567",
   },
   {
-    name: "North Campus",
-    address: "456 Academic Way, North District",
+    name: "Campus Norte",
+    address: "Calle Académica 456, Zona Norte",
     phone: "(555) 234-5678",
   },
   {
-    name: "West Campus",
-    address: "789 Learning Lane, West Side",
+    name: "Campus Oeste",
+    address: "Blvd. del Saber 789, Zona Oeste",
     phone: "(555) 345-6789",
   },
 ];
 
 const quickLinks = [
-  { name: "About Us", path: "/about" },
-  { name: "Events", path: "/events" },
-  { name: "News", path: "/news" },
-  { name: "Gallery", path: "/gallery" },
-  { name: "Contact", path: "/contact" },
+  { name: "Nosotros", path: "/about" },
+  { name: "Eventos", path: "/events" },
+  { name: "Noticias", path: "/news" },
+  { name: "Galería", path: "/gallery" },
+  { name: "Contacto", path: "/contact" },
 ];
 
 const socialLinks = [
@@ -46,15 +46,15 @@ export function Footer() {
                 <GraduationCap className="h-7 w-7 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold">Horizon Academy</span>
+                <span className="text-xl font-bold">Academia Horizonte</span>
                 <span className="text-xs text-primary-foreground/70">
-                  Excellence in Education
+                  Excelencia en Educación
                 </span>
               </div>
             </Link>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
-              Shaping tomorrow's leaders through academic excellence, character
-              development, and community engagement since 1985.
+              Formando a los líderes del mañana a través de la excelencia académica, 
+              el desarrollo del carácter y el compromiso comunitario desde 1985.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -72,7 +72,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-6">Enlaces Rápidos</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
@@ -89,7 +89,7 @@ export function Footer() {
 
           {/* Campuses */}
           <div className="lg:col-span-2">
-            <h3 className="text-lg font-semibold mb-6">Our Campuses</h3>
+            <h3 className="text-lg font-semibold mb-6">Nuestros Campus</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {campuses.map((campus) => (
                 <div key={campus.name} className="space-y-2">
@@ -111,15 +111,15 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary-foreground/20 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/70">
-            © {new Date().getFullYear()} Horizon Academy. All rights reserved.
+            © {new Date().getFullYear()} Academia Horizonte. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-2 text-sm text-primary-foreground/70">
             <Mail className="h-4 w-4" />
             <a
-              href="mailto:info@horizonacademy.edu"
+              href="mailto:info@academiahorizonte.edu"
               className="hover:text-primary-foreground transition-colors"
             >
-              info@horizonacademy.edu
+              info@academiahorizonte.edu
             </a>
           </div>
         </div>
