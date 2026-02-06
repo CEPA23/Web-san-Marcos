@@ -35,8 +35,8 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
           >
-            Formando a los{" "}
-            <span className="text-accent">Líderes</span> del Mañana
+            Formando alumnos {" "}
+            <span className="text-accent">Triunfadores</span> desde el colegio
           </motion.h1>
           
           <motion.p
@@ -45,7 +45,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg sm:text-xl text-primary-foreground/90 mb-8 leading-relaxed max-w-2xl"
           >
-            En Academia Horizonte, cultivamos mentes curiosas, forjamos carácter sólido e 
+            En la I.E.P Mayor de San Marcos, cultivamos mentes curiosas, forjamos carácter sólido e 
             inspiramos el aprendizaje para toda la vida en nuestros tres campus. Únete a una 
             comunidad comprometida con la excelencia académica y el desarrollo integral.
           </motion.p>
@@ -75,9 +75,9 @@ export function HeroSection() {
             className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 max-w-lg"
           >
             {[
-              { value: "40+", label: "Años de Excelencia" },
-              { value: "3", label: "Campus" },
-              { value: "5,000+", label: "Estudiantes" },
+              { value: "15+", label: "Años de Excelencia" },
+              { value: "3", label: "Sedes" },
+              { value: "1,000+", label: "Estudiantes" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="text-3xl font-bold text-accent">{stat.value}</div>

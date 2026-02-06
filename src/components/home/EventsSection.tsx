@@ -7,9 +7,9 @@ import { Card, CardContent } from "@/components/ui/card";
 const events = [
   {
     id: 1,
-    title: "Día de Puertas Abiertas",
-    date: "15 de Febrero, 2026",
-    campus: "Todos los Campus",
+    title: "Apertura del años escolar",
+    date: "16 de Marzo, 2026",
+    campus: "Oxford",
     description: "Explora nuestras instalaciones y conoce a nuestro dedicado cuerpo docente. Tours del campus disponibles todo el día.",
     featured: true,
   },

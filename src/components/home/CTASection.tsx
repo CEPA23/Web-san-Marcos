@@ -23,7 +23,7 @@ export function CTASection() {
             Comienza el Camino de Tu Hijo Hacia la Excelencia
           </h2>
           <p className="text-lg text-primary-foreground/80 mb-8">
-            Únete a miles de familias que han confiado en Academia Horizonte para 
+            Únete a miles de familias que han confiado en nuestra institucion para 
             la educación de sus hijos. Las inscripciones para el nuevo año académico 
             ya están abiertas.
           </p>

@@ -46,15 +46,14 @@ export function Footer() {
                 <GraduationCap className="h-7 w-7 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold">Academia Horizonte</span>
+                <span className="text-xl font-bold">I.E.P Mayor De San Marcos</span>
                 <span className="text-xs text-primary-foreground/70">
                   Excelencia en Educación
                 </span>
               </div>
             </Link>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
-              Formando a los líderes del mañana a través de la excelencia académica, 
-              el desarrollo del carácter y el compromiso comunitario desde 1985.
+              Formando alumnos triunfadores desde el colegio.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -111,7 +110,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary-foreground/20 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/70">
-            © {new Date().getFullYear()} Academia Horizonte. Todos los derechos reservados.
+            © {new Date().getFullYear()} I.E.P Mayor De San Marcos . Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-2 text-sm text-primary-foreground/70">
             <Mail className="h-4 w-4" />
