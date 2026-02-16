@@ -3,38 +3,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import classroomImage from "@/assets/classroom.jpg";
-import scienceFairImage from "@/assets/science-fair.jpg";
-import sportsImage from "@/assets/sports.jpg";
-import graduationImage from "@/assets/graduation.jpg";
-import libraryImage from "@/assets/library.jpg";
-import heroCampusImage from "@/assets/hero-campus.jpg";
+import galleryData from "@/data/gallery.json";
 
-type GalleryCategory = "all" | "campus" | "academics" | "sports" | "events";
+type GalleryItem = {
+  title: string;
+  image: string;
+  category?: string;
+};
 
-interface GalleryImage {
-  id: number;
+type GalleryImage = {
   src: string;
   alt: string;
-  category: GalleryCategory;
-}
-
-const galleryImages: GalleryImage[] = [
-  { id: 1, src: heroCampusImage, alt: "Exterior del Campus Principal", category: "campus" },
-  { id: 2, src: classroomImage, alt: "Aprendizaje en el Aula", category: "academics" },
-  { id: 3, src: scienceFairImage, alt: "Feria de Ciencias", category: "events" },
-  { id: 4, src: sportsImage, alt: "Práctica del Equipo de Fútbol", category: "sports" },
-  { id: 5, src: graduationImage, alt: "Ceremonia de Graduación", category: "events" },
-  { id: 6, src: libraryImage, alt: "Área de Estudio en Biblioteca", category: "campus" },
-];
-
-const categories = [
-  { value: "all", label: "Todas las Fotos" },
-  { value: "campus", label: "Campus" },
-  { value: "academics", label: "Académico" },
-  { value: "sports", label: "Deportes" },
-  { value: "events", label: "Eventos" },
-];
+  category: string;
+};
 
 const container = {
   hidden: { opacity: 0 },
@@ -50,57 +31,65 @@ const item = {
 };
 
 const Gallery = () => {
-  const [selectedCategory, setSelectedCategory] = useState<GalleryCategory>("all");
+  const raw = galleryData as GalleryItem[];
+  const images: GalleryImage[] = raw.map((g) => ({
+    src: g.image,
+    alt: g.title,
+    category: (g.category && g.category.trim()) || "General",
+  }));
+
+  const categories = Array.from(new Set(images.map((img) => img.category))).sort((a, b) => a.localeCompare(b, "es"));
+
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   const filteredImages = selectedCategory === "all"
-    ? galleryImages
-    : galleryImages.filter((img) => img.category === selectedCategory);
+    ? images
+    : images.filter((img) => img.category === selectedCategory);
 
   return (
     <Layout>
-      {/* Hero */}
       <section className="section-padding bg-secondary">
         <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Galería de Fotos
-            </h1>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">Galería de Fotos</h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Explora momentos de nuestros campus, aulas, eventos y actividades 
-              que hacen especial a Academia Horizonte.
+              Explora momentos de nuestros campus, aulas, eventos y actividades.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Gallery */}
       <section className="section-padding bg-background">
         <div className="container-custom">
           {/* Filters */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-wrap gap-2 mb-10"
-          >
-            {categories.map((category) => (
+          {categories.length > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="flex flex-wrap gap-2 mb-10"
+            >
               <Button
-                key={category.value}
-                variant={selectedCategory === category.value ? "default" : "outline"}
+                variant={selectedCategory === "all" ? "default" : "outline"}
                 size="sm"
-                onClick={() => setSelectedCategory(category.value as GalleryCategory)}
+                onClick={() => setSelectedCategory("all")}
               >
-                {category.label}
+                Todas las Fotos
               </Button>
-            ))}
-          </motion.div>
+              {categories.map((cat) => (
+                <Button
+                  key={cat}
+                  variant={selectedCategory === cat ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  {cat}
+                </Button>
+              ))}
+            </motion.div>
+          )}
 
-          {/* Image Grid */}
           <motion.div
             variants={container}
             initial="hidden"
@@ -108,17 +97,18 @@ const Gallery = () => {
             key={selectedCategory}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {filteredImages.map((image) => (
+            {filteredImages.map((image, idx) => (
               <motion.div
-                key={image.id}
+                key={`${image.src}-${idx}`}
                 variants={item}
-                className="aspect-[4/3] overflow-hidden rounded-xl cursor-pointer group"
+                className="aspect-[4/3] overflow-hidden rounded-xl cursor-pointer group border border-border"
                 onClick={() => setSelectedImage(image)}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
                 />
               </motion.div>
             ))}
@@ -132,7 +122,6 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div

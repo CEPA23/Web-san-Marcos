@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroCampus from "@/assets/hero-campus.jpg";
+import franja from "@/assets/franja-hero.jpeg";
 
 export function HeroSection() {
   return (
@@ -10,7 +10,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src={heroCampus}
+          src={franja}
           alt="Campus Academia Horizonte"
           className="h-full w-full object-cover"
         />
@@ -26,7 +26,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-block px-4 py-2 mb-6 text-sm font-medium rounded-full bg-accent/20 text-primary-foreground backdrop-blur-sm"
           >
-            Inscripciones Abiertas 2025-2026
+            Inscripciones Abiertas 2026
           </motion.span>
           
           <motion.h1

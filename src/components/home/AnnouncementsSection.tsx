@@ -1,31 +1,21 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Clock, ArrowRight } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import announcementsData from "@/data/announcements.json";
 
-const announcements = [
-  {
-    id: 1,
-    title: "Nuevo Laboratorio STEM Abre en Campus Norte",
-    excerpt: "Instalaciones de última generación para robótica, programación e investigación científica ahora disponibles para todos los estudiantes.",
-    date: "28 de Enero, 2026",
-    category: "Instalaciones",
-  },
-  {
-    id: 2,
-    title: "Inscripciones Abiertas",
-    excerpt: "Comienza tu solicitud para el año académico 2025-2026. Descuentos por inscripción temprana disponibles.",
-    date: "25 de Enero, 2026",
-    category: "Admisiones",
-  },
-  {
-    id: 3,
-    title: "Estudiantes Ganan Olimpiada Regional de Matemáticas",
-    excerpt: "Nuestros estudiantes obtuvieron el 1er lugar en la Olimpiada Regional de Matemáticas, clasificando para la competencia nacional.",
-    date: "20 de Enero, 2026",
-    category: "Logros",
-  },
-];
+type Announcement = {
+  title: string;
+  description: string;
+  date: string; // YYYY-MM-DD
+  image?: string;
+};
+
+const formatDate = (value: string) => {
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleDateString("es-PE", { day: "2-digit", month: "long", year: "numeric" });
+};
 
 const container = {
   hidden: { opacity: 0 },
@@ -41,6 +31,8 @@ const item = {
 };
 
 export function AnnouncementsSection() {
+  const announcements = (announcementsData as Announcement[]).slice(0, 5);
+
   return (
     <section className="section-padding bg-secondary">
       <div className="container-custom">
@@ -51,12 +43,8 @@ export function AnnouncementsSection() {
           className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12"
         >
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
-              Últimos Anuncios
-            </h2>
-            <p className="text-muted-foreground">
-              Actualizaciones importantes de Academia Horizonte
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">Últimos Anuncios</h2>
+            <p className="text-muted-foreground">Actualizaciones importantes</p>
           </div>
           <Button variant="outline" asChild>
             <Link to="/news">
@@ -73,27 +61,30 @@ export function AnnouncementsSection() {
           viewport={{ once: true }}
           className="space-y-4"
         >
-          {announcements.map((announcement) => (
+          {announcements.map((announcement, idx) => (
             <motion.article
-              key={announcement.id}
+              key={`${announcement.title}-${announcement.date}-${idx}`}
               variants={item}
               className="bg-card rounded-lg p-6 card-hover border border-border"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
-                      {announcement.category}
-                    </span>
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <Clock className="h-4 w-4" />
-                      <span>{announcement.date}</span>
-                    </div>
+                {announcement.image && (
+                  <div className="shrink-0 overflow-hidden rounded-lg border border-border sm:w-40">
+                    <img
+                      src={announcement.image}
+                      alt={announcement.title}
+                      className="h-24 w-full object-cover sm:h-20"
+                      loading="lazy"
+                    />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {announcement.title}
-                  </h3>
-                  <p className="text-muted-foreground">{announcement.excerpt}</p>
+                )}
+                <div className="flex-1">
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground mb-2">
+                    <Clock className="h-4 w-4" />
+                    <span>{formatDate(announcement.date)}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{announcement.title}</h3>
+                  <p className="text-muted-foreground">{announcement.description}</p>
                 </div>
                 <Link
                   to="/news"
@@ -110,3 +101,4 @@ export function AnnouncementsSection() {
     </section>
   );
 }
+

@@ -10,6 +10,7 @@ import News from "./pages/News";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import WhatsAppFloat from "@/components/WhatsAppFloat.jsx";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      <WhatsAppFloat />
     </TooltipProvider>
   </QueryClientProvider>
 );

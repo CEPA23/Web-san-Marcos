@@ -25,25 +25,28 @@ const values = [
 
 const campuses = [
   {
-    name: "Campus Principal",
-    grades: "K-12",
-    students: "2,000+",
-    address: "Av. Educación 123, Centro",
+    id: "primaria",
+    name: "Sede Primaria",
+    grades: "Primaria",
+    students: "1,000",
+    address: "Tupac Yupanqui #631",
     description: "Nuestro campus insignia con instalaciones completas para todos los niveles escolares.",
   },
   {
-    name: "Campus Norte",
-    grades: "K-8",
+    id: "inicial",
+    name: "Sede Inicial",
+    grades: "Inicial",
     students: "1,500+",
-    address: "Calle Académica 456, Zona Norte",
-    description: "Una instalación moderna enfocada en educación primaria y secundaria.",
+    address: "Mayta Capac #136",
+    description: "Una sede para nuestros pequeños del hogar, con ambientes especializados para ellos.",
   },
   {
-    name: "Campus Oeste",
-    grades: "9-12",
+    id: "secundaria",
+    name: "Sede Secundaria",
+    grades: "Secundaria",
     students: "1,200+",
-    address: "Blvd. del Saber 789, Zona Oeste",
-    description: "Campus especializado en preparatoria con programas avanzados de STEM y artes.",
+    address: "Tupac Yupanqui #561",
+    description: "Sede especializada en el nivel secundaria.",
   },
 ];
 
@@ -72,7 +75,7 @@ const About = () => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Acerca de Academia Horizonte
+              Acerca de la I.E.P Mayor De San Marcos
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
               Desde 1985, Academia Horizonte se ha dedicado a formar jóvenes mentes 
@@ -192,7 +195,7 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Fundada en 1985 por un grupo de educadores dedicados, Academia Horizonte 
+                  Fundada en 1985 por un grupo de educadores dedicados, La I.E.P Mayor De San Marcos 
                   comenzó como una pequeña escuela con una gran visión: crear un entorno 
                   educativo donde cada niño pudiera prosperar.
                 </p>
@@ -203,7 +206,7 @@ const About = () => {
                   medicina, derecho, tecnología, artes y servicio público.
                 </p>
                 <p>
-                  Hoy, Academia Horizonte continúa evolucionando, adoptando métodos 
+                  Hoy, La I.E.P Mayor De San Marcos continúa evolucionando, adoptando métodos 
                   de enseñanza innovadores mientras nos mantenemos fieles a nuestros principios 
                   fundadores de excelencia, integridad y comunidad.
                 </p>

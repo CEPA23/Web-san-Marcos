@@ -20,7 +20,7 @@ const features = [
   {
     icon: BookOpen,
     title: "Instalaciones Modernas",
-    description: "Laboratorios de última generación, bibliotecas y espacios de aprendizaje en todos los campus.",
+    description: "Laboratorios de última generación y espacios de aprendizaje en todas las Sedes.",
   },
   {
     icon: Globe,
@@ -58,7 +58,7 @@ export function WhyChooseUsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            ¿Por Qué Elegir Academia Horizonte?
+            ¿Por Qué Unirse a Nuestra Familia?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Combinamos rigor académico con un ambiente acogedor para preparar 

@@ -8,29 +8,32 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import config from "@/data/config.json";
+
+const contact = config.contact;
 
 const campuses = [
   {
-    name: "Campus Principal",
-    address: "Av. Educación 123, Centro, Ciudad 12345",
-    phone: "(555) 123-4567",
-    email: "principal@academiahorizonte.edu",
-    hours: "Lun-Vie: 7:30 AM - 5:00 PM",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368459418!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1635959000000!5m2!1sen!2sus",
+  name: "Sede Primaria",
+  address: contact.address,
+  phone: contact.phone,
+  email: contact.email,
+  hours: "Lun-Vie: 7:30 AM - 5:00 PM",
+  mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d987.4566363002045!2d-79.0238366899898!3d-8.119136457221831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d7ee873e45d%3A0x82d46e6f8573895e!2sColegio%20San%20Marcos!5e0!3m2!1ses-419!2spe!4v1771221885412!5m2!1ses-419!2spe"
   },
   {
-    name: "Campus Norte",
-    address: "Calle Académica 456, Zona Norte, Ciudad 12346",
-    phone: "(555) 234-5678",
-    email: "norte@academiahorizonte.edu",
+    name: "Sede Inicial",
+    address: contact.address,
+    phone: contact.phone,
+    email: contact.email,
     hours: "Lun-Vie: 7:30 AM - 5:00 PM",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.177489855011!2d-73.98823928459277!3d40.757977779326926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1635959100000!5m2!1sen!2sus",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.826049024901!2d-79.02461184839618!3d-8.119186908374601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d7eda9fb465%3A0x6cfa81ea9a95922!2sSan%20Marcos!5e0!3m2!1ses-419!2spe!4v1771222042233!5m2!1ses-419!2spe",
   },
   {
-    name: "Campus Oeste",
-    address: "Blvd. del Saber 789, Zona Oeste, Ciudad 12347",
-    phone: "(555) 345-6789",
-    email: "oeste@academiahorizonte.edu",
+    name: "Sede Secundiaria",
+    address: contact.address,
+    phone: contact.phone,
+    email: contact.email,
     hours: "Lun-Vie: 7:30 AM - 5:00 PM",
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.2772247058793!2d-74.04668368459362!3d40.73379787933001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sExchange%20Place!5e0!3m2!1sen!2sus!4v1635959200000!5m2!1sen!2sus",
   },
@@ -77,7 +80,53 @@ const Contact = () => {
 
     setIsSubmitting(true);
     
-    // Simulate form submission
+    try {
+      const contactEmail = (contact?.email ?? "").toString().trim();
+
+      if (!contactEmail) {
+        toast({
+          title: "No hay correo configurado",
+          description: "Configura el correo de contacto en src/data/config.json.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      const bodyLines = [
+        `Nombre: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Teléfono: ${formData.phone || "-"}`,
+        `Campus: ${formData.campus}`,
+        "",
+        "Mensaje:",
+        formData.message,
+      ];
+
+      const mailtoHref = `mailto:${encodeURIComponent(contactEmail)}?subject=${encodeURIComponent(
+        formData.subject
+      )}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+
+      window.location.href = mailtoHref;
+
+      toast({
+        title: "Listo",
+        description: "Se abrió tu aplicación de correo con el mensaje preparado para enviar.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        campus: "",
+        subject: "",
+        message: "",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+    return;
+
+    /* Legacy mock submit (unreachable)
     await new Promise((resolve) => setTimeout(resolve, 1000));
     
     toast({
@@ -94,6 +143,7 @@ const Contact = () => {
       message: "",
     });
     setIsSubmitting(false);
+    */
   };
 
   return (

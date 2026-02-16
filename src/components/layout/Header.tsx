@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
+
 
 const navItems = [
   { name: "Inicio", path: "/" },
@@ -23,15 +25,19 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary transition-transform group-hover:scale-105">
-              <GraduationCap className="h-7 w-7 text-primary-foreground" />
-            </div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+                <img 
+                  src={logo} 
+                  alt="Logo del colegio"
+                  className="h-12 w-12 object-contain"
+                />
+              </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold text-foreground">
-                Academia Horizonte
+                I.E.P Mayor De San Marcos
               </span>
               <span className="text-xs text-muted-foreground">
-                Excelencia en Educación
+                Formando Alumnos Triunfadores desde el colegio
               </span>
             </div>
           </Link>

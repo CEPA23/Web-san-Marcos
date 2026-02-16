@@ -1,43 +1,22 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import eventsData from "@/data/events.json";
 
-const events = [
-  {
-    id: 1,
-    title: "Apertura del años escolar",
-    date: "16 de Marzo, 2026",
-    campus: "Oxford",
-    description: "Explora nuestras instalaciones y conoce a nuestro dedicado cuerpo docente. Tours del campus disponibles todo el día.",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Concierto de Primavera",
-    date: "8 de Marzo, 2026",
-    campus: "Campus Principal",
-    description: "Muestra anual con presentaciones de estudiantes de todos los niveles escolares.",
-    featured: false,
-  },
-  {
-    id: 3,
-    title: "Feria de Ciencias",
-    date: "22 de Marzo, 2026",
-    campus: "Campus Norte",
-    description: "Los estudiantes presentan proyectos científicos innovadores compitiendo por las finales regionales.",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Reunión de Padres y Maestros",
-    date: "5 de Abril, 2026",
-    campus: "Todos los Campus",
-    description: "Agenda reuniones con los maestros para hablar sobre el progreso y metas de los estudiantes.",
-    featured: false,
-  },
-];
+type Event = {
+  title: string;
+  description: string;
+  date: string; // YYYY-MM-DD
+  image?: string;
+};
+
+const formatDate = (value: string) => {
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleDateString("es-PE", { day: "2-digit", month: "long", year: "numeric" });
+};
 
 const container = {
   hidden: { opacity: 0 },
@@ -53,6 +32,11 @@ const item = {
 };
 
 export function EventsSection() {
+  const events = (eventsData as Event[]).slice(0, 4).map((event, idx) => ({
+    ...event,
+    featured: idx === 0,
+  }));
+
   return (
     <section className="section-padding bg-background">
       <div className="container-custom">
@@ -63,12 +47,8 @@ export function EventsSection() {
           className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12"
         >
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
-              Próximos Eventos
-            </h2>
-            <p className="text-muted-foreground">
-              Mantente conectado con nuestra comunidad escolar
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">Próximos Eventos</h2>
+            <p className="text-muted-foreground">Mantente conectado con nuestra comunidad escolar</p>
           </div>
           <Button variant="outline" asChild>
             <Link to="/events">
@@ -85,29 +65,31 @@ export function EventsSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {events.map((event) => (
-            <motion.div key={event.id} variants={item}>
-              <Card className={`h-full card-hover ${event.featured ? "ring-2 ring-accent" : ""}`}>
+          {events.map((event, idx) => (
+            <motion.div key={`${event.title}-${event.date}-${idx}`} variants={item}>
+              <Card className={`h-full card-hover ${idx === 0 ? "ring-2 ring-accent" : ""}`}>
                 <CardContent className="p-6 flex flex-col h-full">
-                  {event.featured && (
+                  {idx === 0 && (
                     <span className="inline-block self-start px-3 py-1 mb-4 text-xs font-semibold rounded-full gold-gradient text-foreground">
                       Destacado
                     </span>
                   )}
-                  <h3 className="text-lg font-semibold text-foreground mb-3">
-                    {event.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-4 flex-1">
-                    {event.description}
-                  </p>
+                  {event.image && (
+                    <div className="mb-4 overflow-hidden rounded-lg border border-border">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="h-32 w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <h3 className="text-lg font-semibold text-foreground mb-3">{event.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 flex-1">{event.description}</p>
                   <div className="space-y-2 mt-auto pt-4 border-t border-border">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Calendar className="h-4 w-4 text-accent" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <MapPin className="h-4 w-4 text-accent" />
-                      <span>{event.campus}</span>
+                      <span>{formatDate(event.date)}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -119,3 +101,4 @@ export function EventsSection() {
     </section>
   );
 }
+

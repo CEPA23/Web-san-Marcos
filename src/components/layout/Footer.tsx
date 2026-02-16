@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Music2 } from "lucide-react";
+import logo from "@/assets/logo.png";
+import config from "@/data/config.json";
+
+const contact = config.contact;
 
 const campuses = [
   {
-    name: "Campus Principal",
-    address: "Av. Educación 123, Centro",
-    phone: "(555) 123-4567",
+    name: "Inicial",
+    address: contact.address,
+    phone: contact.phone,
   },
   {
-    name: "Campus Norte",
-    address: "Calle Académica 456, Zona Norte",
-    phone: "(555) 234-5678",
+    name: "Primaria",
+    address: contact.address,
+    phone: contact.phone,
   },
   {
-    name: "Campus Oeste",
-    address: "Blvd. del Saber 789, Zona Oeste",
-    phone: "(555) 345-6789",
+    name: "Secundaria",
+    address: contact.address,
+    phone: contact.phone,
   },
 ];
 
@@ -28,11 +32,11 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Youtube, href: "#", label: "YouTube" },
-];
+  { icon: Facebook, href: config.social.facebook, label: "Facebook" },
+  { icon: Instagram, href: config.social.instagram, label: "Instagram" },
+  { icon: Music2, href: config.social.tiktok, label: "TikTok" },
+  { icon: Youtube, href: config.social.youtube, label: "YouTube" },
+].filter((social) => typeof social.href === "string" && social.href.trim().length > 0);
 
 export function Footer() {
   return (
@@ -42,8 +46,12 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-foreground/10 backdrop-blur">
-                <GraduationCap className="h-7 w-7 text-primary-foreground" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+                <img 
+                  src={logo} 
+                  alt="Logo del colegio"
+                  className="h-12 w-12 object-contain"
+                />  
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold">I.E.P Mayor De San Marcos</span>
@@ -115,10 +123,10 @@ export function Footer() {
           <div className="flex items-center gap-2 text-sm text-primary-foreground/70">
             <Mail className="h-4 w-4" />
             <a
-              href="mailto:info@academiahorizonte.edu"
+              href={`mailto:${contact.email}`}
               className="hover:text-primary-foreground transition-colors"
             >
-              info@academiahorizonte.edu
+              {contact.email}
             </a>
           </div>
         </div>
