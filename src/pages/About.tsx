@@ -78,7 +78,7 @@ const About = () => {
               Acerca de la I.E.P Mayor De San Marcos
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Desde 1985, Academia Horizonte se ha dedicado a formar jóvenes mentes 
+              Desde 1985, La I.E.P Mayor De San Marcos se ha dedicado a formar jóvenes mentes 
               y preparar estudiantes para una vida de aprendizaje y liderazgo.
             </p>
           </motion.div>
@@ -150,7 +150,7 @@ const About = () => {
               Nuestros Valores Fundamentales
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Los principios que guían todo lo que hacemos en Academia Horizonte
+              Los principios que guían todo lo que hacemos en la I.E.P Mayor De San Marcos
             </p>
           </motion.div>
 
