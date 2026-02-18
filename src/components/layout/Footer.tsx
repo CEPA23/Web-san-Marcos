@@ -4,24 +4,7 @@ import logo from "@/assets/logo.png";
 import config from "@/data/config.json";
 
 const contact = config.contact;
-
-const campuses = [
-  {
-    name: "Inicial",
-    address: contact.address,
-    phone: contact.phone,
-  },
-  {
-    name: "Primaria",
-    address: contact.address,
-    phone: contact.phone,
-  },
-  {
-    name: "Secundaria",
-    address: contact.address,
-    phone: contact.phone,
-  },
-];
+const campuses = Array.isArray(config.campuses) ? config.campuses : [];
 
 const quickLinks = [
   { name: "Nosotros", path: "/about" },

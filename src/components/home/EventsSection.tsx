@@ -9,6 +9,7 @@ type Event = {
   title: string;
   description: string;
   date: string; // YYYY-MM-DD
+  featured?: boolean;
   image?: string;
 };
 
@@ -32,10 +33,14 @@ const item = {
 };
 
 export function EventsSection() {
-  const events = (eventsData as Event[]).slice(0, 4).map((event, idx) => ({
-    ...event,
-    featured: idx === 0,
-  }));
+  const events = (eventsData as Event[])
+    .map((event, idx) => ({
+      ...event,
+      featured: Boolean(event.featured),
+      originalIndex: idx,
+    }))
+    .sort((a, b) => Number(b.featured) - Number(a.featured) || a.originalIndex - b.originalIndex)
+    .slice(0, 4);
 
   return (
     <section className="section-padding bg-background">
@@ -67,9 +72,9 @@ export function EventsSection() {
         >
           {events.map((event, idx) => (
             <motion.div key={`${event.title}-${event.date}-${idx}`} variants={item}>
-              <Card className={`h-full card-hover ${idx === 0 ? "ring-2 ring-accent" : ""}`}>
+              <Card className={`h-full card-hover ${event.featured ? "ring-2 ring-accent" : ""}`}>
                 <CardContent className="p-6 flex flex-col h-full">
-                  {idx === 0 && (
+                  {event.featured && (
                     <span className="inline-block self-start px-3 py-1 mb-4 text-xs font-semibold rounded-full gold-gradient text-foreground">
                       Destacado
                     </span>
@@ -101,4 +106,3 @@ export function EventsSection() {
     </section>
   );
 }
-

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
@@ -8,6 +9,8 @@ type Announcement = {
   title: string;
   description: string;
   date: string; // YYYY-MM-DD
+  category?: string;
+  featured?: boolean;
   image?: string;
 };
 
@@ -31,7 +34,17 @@ const item = {
 };
 
 export function AnnouncementsSection() {
-  const announcements = (announcementsData as Announcement[]).slice(0, 5);
+  const announcements = useMemo(() => {
+    return (announcementsData as Announcement[])
+      .map((announcement, idx) => ({
+        ...announcement,
+        category: (announcement.category ?? "General").trim(),
+        featured: Boolean(announcement.featured),
+        originalIndex: idx,
+      }))
+      .sort((a, b) => Number(b.featured) - Number(a.featured) || a.originalIndex - b.originalIndex)
+      .slice(0, 5);
+  }, []);
 
   return (
     <section className="section-padding bg-secondary">
@@ -40,10 +53,10 @@ export function AnnouncementsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12"
+          className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center"
         >
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">Últimos Anuncios</h2>
+            <h2 className="mb-2 text-3xl font-bold text-foreground sm:text-4xl">Ultimos Anuncios</h2>
             <p className="text-muted-foreground">Actualizaciones importantes</p>
           </div>
           <Button variant="outline" asChild>
@@ -65,9 +78,9 @@ export function AnnouncementsSection() {
             <motion.article
               key={`${announcement.title}-${announcement.date}-${idx}`}
               variants={item}
-              className="bg-card rounded-lg p-6 card-hover border border-border"
+              className="card-hover rounded-lg border border-border bg-card p-6"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 {announcement.image && (
                   <div className="shrink-0 overflow-hidden rounded-lg border border-border sm:w-40">
                     <img
@@ -78,19 +91,31 @@ export function AnnouncementsSection() {
                     />
                   </div>
                 )}
+
                 <div className="flex-1">
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground mb-2">
-                    <Clock className="h-4 w-4" />
-                    <span>{formatDate(announcement.date)}</span>
+                  <div className="mb-2 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                    {announcement.featured && (
+                      <span className="rounded-full gold-gradient px-2 py-0.5 text-xs font-semibold text-foreground">
+                        Destacado
+                      </span>
+                    )}
+                    <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-foreground/80">
+                      {announcement.category}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      {formatDate(announcement.date)}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{announcement.title}</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-foreground">{announcement.title}</h3>
                   <p className="text-muted-foreground">{announcement.description}</p>
                 </div>
+
                 <Link
                   to="/news"
-                  className="text-sm font-medium text-primary hover:text-primary/80 flex items-center gap-1 transition-colors"
+                  className="flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
                 >
-                  Leer Más
+                  Leer Mas
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -101,4 +126,3 @@ export function AnnouncementsSection() {
     </section>
   );
 }
-

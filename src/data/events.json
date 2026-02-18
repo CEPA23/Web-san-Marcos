@@ -3,6 +3,10 @@
     "title": "Apertura del año Escolar 2026",
     "description": "Ceremonia de inicio",
     "date": "2026-03-16",
+    "category": "Comunidad",
+    "time": "8:00 AM - 10:00 AM",
+    "campus": "Todos los Campus",
+    "featured": true,
     "image": "/images/eventos/apertura.jpg"
   }
 ]

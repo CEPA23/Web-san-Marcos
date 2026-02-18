@@ -11,33 +11,10 @@ import { z } from "zod";
 import config from "@/data/config.json";
 
 const contact = config.contact;
-
-const campuses = [
-  {
-  name: "Sede Primaria",
-  address: contact.address,
-  phone: contact.phone,
-  email: contact.email,
-  hours: "Lun-Vie: 7:30 AM - 5:00 PM",
-  mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d987.4566363002045!2d-79.0238366899898!3d-8.119136457221831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d7ee873e45d%3A0x82d46e6f8573895e!2sColegio%20San%20Marcos!5e0!3m2!1ses-419!2spe!4v1771221885412!5m2!1ses-419!2spe"
-  },
-  {
-    name: "Sede Inicial",
-    address: contact.address,
-    phone: contact.phone,
-    email: contact.email,
-    hours: "Lun-Vie: 7:30 AM - 5:00 PM",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.826049024901!2d-79.02461184839618!3d-8.119186908374601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d7eda9fb465%3A0x6cfa81ea9a95922!2sSan%20Marcos!5e0!3m2!1ses-419!2spe!4v1771222042233!5m2!1ses-419!2spe",
-  },
-  {
-    name: "Sede Secundiaria",
-    address: contact.address,
-    phone: contact.phone,
-    email: contact.email,
-    hours: "Lun-Vie: 7:30 AM - 5:00 PM",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.2772247058793!2d-74.04668368459362!3d40.73379787933001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sExchange%20Place!5e0!3m2!1sen!2sus!4v1635959200000!5m2!1sen!2sus",
-  },
-];
+const campuses = Array.isArray(config.campuses) ? config.campuses : [];
+const campusHours = "Lun-Vie: 8:00 AM - 5:00 PM";
+const primaryCampusMapUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d987.4566363002045!2d-79.0238366899898!3d-8.119136457221831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d7ee873e45d%3A0x82d46e6f8573895e!2sColegio%20San%20Marcos!5e0!3m2!1ses-419!2spe!4v1771221885412!5m2!1ses-419!2spe";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "El nombre es requerido").max(100, "El nombre debe tener menos de 100 caracteres"),
@@ -319,13 +296,13 @@ const Contact = () => {
                       </div>
                       <div className="flex items-center gap-3 text-sm text-muted-foreground">
                         <Mail className="h-5 w-5 text-accent shrink-0" />
-                        <a href={`mailto:${campus.email}`} className="hover:text-foreground transition-colors">
-                          {campus.email}
+                        <a href={`mailto:${contact.email}`} className="hover:text-foreground transition-colors">
+                          {contact.email}
                         </a>
                       </div>
                       <div className="flex items-center gap-3 text-sm text-muted-foreground">
                         <Clock className="h-5 w-5 text-accent shrink-0" />
-                        <span>{campus.hours}</span>
+                        <span>{campusHours}</span>
                       </div>
                     </div>
                   </CardContent>
@@ -344,7 +321,7 @@ const Contact = () => {
           </h2>
           <div className="aspect-[21/9] rounded-2xl overflow-hidden shadow-elevated">
             <iframe
-              src={campuses[0].mapUrl}
+              src={primaryCampusMapUrl}
               width="100%"
               height="100%"
               style={{ border: 0 }}

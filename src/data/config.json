@@ -8,6 +8,28 @@
     "phone": "51957150158",
     "address": "Tupac Yupanqui 631"
   },
+  "campuses": [
+    {
+      "name": "Inicial",
+      "address": "Mayta Capac #136",
+      "phone": "943906004"
+    },
+    {
+      "name": "Primaria",
+      "address": "Tupac Yupanqui #631",
+      "phone": "51957150158"
+    },
+    {
+      "name": "Secundaria",
+      "address": "Tupac Yupanqui #544",
+      "phone": "973542952"
+    },
+    {
+      "name": "Sede Santa Isabel",
+      "address": "Calle LiverPool #190",
+      "phone": "986797025"
+    }
+  ],
   "social": {
     "facebook": "https://web.facebook.com/ColegioSanMarcosTrujillo",
     "instagram": "https://www.instagram.com/iepmayordesanmarcos/",

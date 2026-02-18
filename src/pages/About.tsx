@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Target, Eye, Heart, Building, MapPin, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import libraryImage from "@/assets/library.jpg";
-import classroomImage from "@/assets/classroom.jpg";
+import vison from "@/assets/nuestravisio-mision.jpeg";
+import historia from "@/assets/historia.jpeg";
 
 const values = [
   {
@@ -48,6 +48,14 @@ const campuses = [
     address: "Tupac Yupanqui #561",
     description: "Sede especializada en el nivel secundaria.",
   },
+  {
+    id: "Inicial-Primaria-Secundaria",
+    name: "Sede Santa Isabel",
+    grades: "Inicial-Primaria-Secundaria",
+    students: "1,200+",
+    address: "Calle LiverPool #190",
+    description: "Sede especializda en todos los niveles academicos",
+  },
 ];
 
 const container = {
@@ -78,7 +86,7 @@ const About = () => {
               Acerca de la I.E.P Mayor De San Marcos
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Desde 1985, La I.E.P Mayor De San Marcos se ha dedicado a formar jóvenes mentes 
+              Desde 1997, La I.E.P Mayor De San Marcos se ha dedicado a formar jóvenes mentes 
               y preparar estudiantes para una vida de aprendizaje y liderazgo.
             </p>
           </motion.div>
@@ -95,7 +103,7 @@ const About = () => {
               viewport={{ once: true }}
             >
               <img
-                src={libraryImage}
+                src={vison}
                 alt="Biblioteca Academia Horizonte"
                 className="rounded-2xl shadow-elevated"
               />
@@ -114,9 +122,11 @@ const About = () => {
                   <h2 className="text-2xl font-bold text-foreground">Nuestra Misión</h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Proporcionar una experiencia educativa excepcional que empodere a los estudiantes 
-                  para convertirse en ciudadanos globales reflexivos, innovadores y responsables a través 
-                  de rigurosos académicos, desarrollo del carácter y compromiso comunitario.
+                  Somos una Institución Educativa Privada que brinda las condiciones 
+                  necesarias a través de los Compromisos de Gestión Escolar, para que 
+                  todos sus estudiantes desarrollen sus aprendizajes, orientados hacia la excelencia y alcanzando 
+                  su desarrollo integral en espacios seguros, inclusivos, de sana convivencia y libres de violencia. 
+                  Afianzando permanentemente sus aprendizajes basados en los fines y principios de la Educación Peruana”
                 </p>
               </div>
               <div>
@@ -127,9 +137,11 @@ const About = () => {
                   <h2 className="text-2xl font-bold text-foreground">Nuestra Visión</h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Ser reconocidos como una institución líder en educación integral, 
-                  inspirando el amor por el aprendizaje y cultivando líderes que hacen 
-                  contribuciones significativas a la sociedad.
+                  Ser reconocidos en nuestra localidad como una Institución Educativa Privada 
+                  que contribuye a que todos sus estudiantes puedan desarrollar su potencial 
+                  desde la primera infancia, formando ciudadanos capaces de resolver con éxito 
+                  los problemas que se les presente, que asuman una actitud activa, crítica, analítica y responsable 
+                  frente a los hechos de su entorno.
                 </p>
               </div>
             </motion.div>
@@ -195,20 +207,19 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Fundada en 1985 por un grupo de educadores dedicados, La I.E.P Mayor De San Marcos 
-                  comenzó como una pequeña escuela con una gran visión: crear un entorno 
-                  educativo donde cada niño pudiera prosperar.
+                  La Institución Educativa Privada Mayor de San Marcos fue creada en 1996 e inició 
+                  sus actividades en 1997 en Trujillo, ofreciendo los niveles Inicial, Primaria y Secundaria. 
+                  Desde su primer año destacó por su alta demanda estudiantil, lo que impulsó la expansión de sus instalaciones.
                 </p>
                 <p>
-                  Durante las últimas cuatro décadas, hemos crecido de un solo salón 
-                  de 30 estudiantes a una institución multicampus que atiende a más de 5,000 
-                  estudiantes anualmente. Nuestros egresados se han convertido en líderes en 
-                  medicina, derecho, tecnología, artes y servicio público.
+                  A lo largo de los años ha obtenido diversos reconocimientos académicos, culturales y artísticos a nivel local, regional y nacional, 
+                  incluyendo premios en poesía, teatro, ciencia, danza y marinera, así como distinciones de instituciones públicas.
                 </p>
                 <p>
-                  Hoy, La I.E.P Mayor De San Marcos continúa evolucionando, adoptando métodos 
-                  de enseñanza innovadores mientras nos mantenemos fieles a nuestros principios 
-                  fundadores de excelencia, integridad y comunidad.
+                  Actualmente, el consorcio cuenta con siete locales y atiende a más de dos mil estudiantes en educación básica regular, 
+                  educación no escolarizada, además de integrar el Instituto Pedagógico Oxford y el Instituto Tecnológico Von Humboldt. 
+                  Su propuesta educativa se basa en una formación integral con programas holísticos orientados a la excelencia académica y al desarrollo 
+                  de estudiantes exitosos.
                 </p>
               </div>
             </motion.div>
@@ -219,7 +230,7 @@ const About = () => {
               className="order-1 lg:order-2"
             >
               <img
-                src={classroomImage}
+                src={historia}
                 alt="Aprendizaje en el aula"
                 className="rounded-2xl shadow-elevated"
               />

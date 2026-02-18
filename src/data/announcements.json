@@ -1,9 +1,11 @@
 [
   {
     "title": "Apertura del año Escolar 2026",
-    "description": "Inicio oficial del año académico",
+    "description": "Apertura del año Escolar 2026.",
     "date": "2026-03-16",
+    "category": "General",
+    "featured": true,
     "image": "/images/anuncios/apertura.jpg"
   }
+  
 ]
-
