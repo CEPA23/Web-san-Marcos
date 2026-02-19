@@ -11,7 +11,7 @@ export function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={franja}
-          alt="Campus Academia Horizonte"
+          alt="San Marcos"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 hero-gradient" />
