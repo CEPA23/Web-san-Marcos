@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Target, Eye, Heart, Building, MapPin, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import vison from "@/assets/nuestravisio-mision.jpeg";
-import historia from "@/assets/historia.jpeg";
+import vison from "@/assets/nuestravisio-mision.jpg";
+import historia from "@/assets/historia.jpg";
 
 const values = [
   {
