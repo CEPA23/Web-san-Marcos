@@ -5,7 +5,7 @@ import { Target, Eye, Heart, Building, MapPin, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import historia from "@/assets/historia.jpg";
 import vision from "@/assets/nuestravisio-mision.jpg";
-import mision from "@/assets/otro.jpg";
+import mision from "@/assets/mision.jpg";
 
 
 const values = [

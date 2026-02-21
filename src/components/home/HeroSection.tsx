@@ -28,7 +28,7 @@ export function HeroSection() {
           >
             Inscripciones Abiertas 2026
           </motion.span>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -38,18 +38,18 @@ export function HeroSection() {
             Formando alumnos {" "}
             <span className="text-accent">Triunfadores</span> desde el colegio
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg sm:text-xl text-primary-foreground/90 mb-8 leading-relaxed max-w-2xl"
           >
-            En la I.E.P Mayor de San Marcos, cultivamos mentes curiosas, forjamos carácter sólido e 
-            inspiramos el aprendizaje para toda la vida en nuestros tres campus. Únete a una 
+            En la I.E.P Mayor de San Marcos, cultivamos mentes curiosas, forjamos carácter sólido e
+            inspiramos el aprendizaje para toda la vida en nuestros tres campus. Únete a una
             comunidad comprometida con la excelencia académica y el desarrollo integral.
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,8 +76,8 @@ export function HeroSection() {
           >
             {[
               { value: "15+", label: "Años de Excelencia" },
-              { value: "3", label: "Sedes" },
-              { value: "1,000+", label: "Estudiantes" },
+              { value: "4", label: "Sedes" },
+              { value: "1,500+", label: "Estudiantes" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="text-3xl font-bold text-accent">{stat.value}</div>
