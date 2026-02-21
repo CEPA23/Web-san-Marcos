@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Target, Eye, Heart, Building, MapPin, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import vison from "@/assets/nuestravisio-mision.jpg";
 import historia from "@/assets/historia.jpg";
+import vision from "@/assets/nuestravisio-mision.jpg";
+import mision from "@/assets/otro.jpg";
+
 
 const values = [
   {
@@ -71,6 +74,49 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
+const FlipCard = ({ title, text, image, icon: Icon }: { title: string; text: string; image: string; icon: any }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <div
+      className="relative h-[400px] w-full perspective-1000 cursor-pointer group"
+      onMouseEnter={() => setIsFlipped(true)}
+      onMouseLeave={() => setIsFlipped(false)}
+      onClick={() => setIsFlipped(!isFlipped)}
+    >
+      <motion.div
+        className="relative w-full h-full preserve-3d"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+      >
+        {/* Front */}
+        <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden shadow-elevated">
+          <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex flex-col items-center justify-end pb-12 text-white p-6">
+            <div className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-4 ring-1 ring-white/30">
+              <Icon className="h-8 w-8 text-white" />
+            </div>
+            <h3 className="text-3xl font-bold tracking-tight">{title}</h3>
+            <p className="mt-2 text-white/80 font-medium">Pasa el mouse para ver más</p>
+          </div>
+        </div>
+
+        {/* Back */}
+        <div
+          className="absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-primary text-primary-foreground p-8 flex flex-col justify-center items-center text-center shadow-elevated border-4 border-accent"
+          style={{ transform: "rotateY(180deg)" }}
+        >
+          <div className="h-20 w-20 rounded-full bg-accent/20 flex items-center justify-center mb-6">
+            <Icon className="h-10 w-10 text-accent" />
+          </div>
+          <h3 className="text-2xl font-bold mb-4">{title}</h3>
+          <p className="text-lg leading-relaxed">{text}</p>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 const About = () => {
   return (
     <Layout>
@@ -86,7 +132,7 @@ const About = () => {
               Acerca de la I.E.P Mayor De San Marcos
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Desde 1997, La I.E.P Mayor De San Marcos se ha dedicado a formar jóvenes mentes 
+              Desde 1997, La I.E.P Mayor De San Marcos se ha dedicado a formar jóvenes mentes
               y preparar estudiantes para una vida de aprendizaje y liderazgo.
             </p>
           </motion.div>
@@ -94,56 +140,46 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background overflow-hidden">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Nuestra Esencia
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Conoce el propósito y el futuro que construimos para nuestros estudiantes.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <img
-                src={vison}
-                alt="Biblioteca Academia Horizonte"
-                className="rounded-2xl shadow-elevated"
+              <FlipCard
+                title="Nuestra Misión"
+                icon={Target}
+                image={mision}
+                text="Somos una Institución Educativa Privada que brinda las condiciones necesarias a través de los Compromisos de Gestión Escolar, para que todos sus estudiantes desarrollen sus aprendizajes, orientados hacia la excelencia y alcanzando su desarrollo integral en espacios seguros, inclusivos, de sana convivencia y libres de violencia."
               />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-8"
             >
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Target className="h-6 w-6 text-primary" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-foreground">Nuestra Misión</h2>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  Somos una Institución Educativa Privada que brinda las condiciones 
-                  necesarias a través de los Compromisos de Gestión Escolar, para que 
-                  todos sus estudiantes desarrollen sus aprendizajes, orientados hacia la excelencia y alcanzando 
-                  su desarrollo integral en espacios seguros, inclusivos, de sana convivencia y libres de violencia. 
-                  Afianzando permanentemente sus aprendizajes basados en los fines y principios de la Educación Peruana”
-                </p>
-              </div>
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Eye className="h-6 w-6 text-primary" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-foreground">Nuestra Visión</h2>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  Ser reconocidos en nuestra localidad como una Institución Educativa Privada 
-                  que contribuye a que todos sus estudiantes puedan desarrollar su potencial 
-                  desde la primera infancia, formando ciudadanos capaces de resolver con éxito 
-                  los problemas que se les presente, que asuman una actitud activa, crítica, analítica y responsable 
-                  frente a los hechos de su entorno.
-                </p>
-              </div>
+              <FlipCard
+                title="Nuestra Visión"
+                icon={Eye}
+                image={vision}
+                text="Ser reconocidos en nuestra localidad como una Institución Educativa Privada que contribuye a que todos sus estudiantes puedan desarrollar su potencial desde la primera infancia, formando ciudadanos capaces de resolver con éxito los problemas que se les presente, que asuman una actitud activa, crítica, analítica y responsable frente a los hechos de su entorno."
+              />
             </motion.div>
           </div>
         </div>
@@ -207,18 +243,18 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  La Institución Educativa Privada Mayor de San Marcos fue creada en 1996 e inició 
-                  sus actividades en 1997 en Trujillo, ofreciendo los niveles Inicial, Primaria y Secundaria. 
+                  La Institución Educativa Privada Mayor de San Marcos fue creada en 1996 e inició
+                  sus actividades en 1997 en Trujillo, ofreciendo los niveles Inicial, Primaria y Secundaria.
                   Desde su primer año destacó por su alta demanda estudiantil, lo que impulsó la expansión de sus instalaciones.
                 </p>
                 <p>
-                  A lo largo de los años ha obtenido diversos reconocimientos académicos, culturales y artísticos a nivel local, regional y nacional, 
+                  A lo largo de los años ha obtenido diversos reconocimientos académicos, culturales y artísticos a nivel local, regional y nacional,
                   incluyendo premios en poesía, teatro, ciencia, danza y marinera, así como distinciones de instituciones públicas.
                 </p>
                 <p>
-                  Actualmente, el consorcio cuenta con siete locales y atiende a más de dos mil estudiantes en educación básica regular, 
-                  educación no escolarizada, además de integrar el Instituto Pedagógico Oxford y el Instituto Tecnológico Von Humboldt. 
-                  Su propuesta educativa se basa en una formación integral con programas holísticos orientados a la excelencia académica y al desarrollo 
+                  Actualmente, el consorcio cuenta con siete locales y atiende a más de dos mil estudiantes en educación básica regular,
+                  educación no escolarizada, además de integrar el Instituto Pedagógico Oxford y el Instituto Tecnológico Von Humboldt.
+                  Su propuesta educativa se basa en una formación integral con programas holísticos orientados a la excelencia académica y al desarrollo
                   de estudiantes exitosos.
                 </p>
               </div>
