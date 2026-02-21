@@ -22,13 +22,17 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur-md">
       <nav className="container-custom">
         <div className="flex h-20 items-center justify-between">
-          <Link to="/" className="group flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
-              <img src={logo} alt="Logo del colegio" className="h-12 w-12 object-contain" />
+          <Link to="/" className="group flex items-center gap-2 sm:gap-3 shrink-0">
+            <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+              <img src={logo} alt="Logo del colegio" className="h-full w-full object-contain" />
             </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground">I.E.P Mayor De San Marcos</span>
-              <span className="text-xs text-muted-foreground">Formando Alumnos Triunfadores desde el colegio</span>
+            <div className="flex flex-col min-w-0">
+              <span className="text-base sm:text-xl font-bold text-foreground truncate">
+                I.E.P Mayor De San Marcos
+              </span>
+              <span className="text-[9px] sm:text-xs text-muted-foreground line-clamp-1">
+                Formando Alumnos Triunfadores desde el colegio
+              </span>
             </div>
           </Link>
 
@@ -37,11 +41,10 @@ export function Header() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                  location.pathname === item.path
+                className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${location.pathname === item.path
                     ? "bg-primary/5 text-primary"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
@@ -82,11 +85,10 @@ export function Header() {
                     key={item.path}
                     to={item.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block rounded-md px-4 py-3 text-sm font-medium transition-colors ${
-                      location.pathname === item.path
+                    className={`block rounded-md px-4 py-3 text-sm font-medium transition-colors ${location.pathname === item.path
                         ? "bg-primary/5 text-primary"
                         : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    }`}
+                      }`}
                   >
                     {item.name}
                   </Link>

@@ -79,7 +79,7 @@ const FlipCard = ({ title, text, image, icon: Icon }: { title: string; text: str
 
   return (
     <div
-      className="relative h-[400px] w-full perspective-1000 cursor-pointer group"
+      className="relative h-[480px] sm:h-[420px] md:h-[450px] w-full perspective-1000 cursor-pointer group"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
       onClick={() => setIsFlipped(!isFlipped)}
@@ -92,25 +92,29 @@ const FlipCard = ({ title, text, image, icon: Icon }: { title: string; text: str
         {/* Front */}
         <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden shadow-elevated">
           <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex flex-col items-center justify-end pb-12 text-white p-6">
-            <div className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-4 ring-1 ring-white/30">
-              <Icon className="h-8 w-8 text-white" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col items-center justify-end pb-8 sm:pb-12 text-white p-6">
+            <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-4 ring-1 ring-white/30">
+              <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
             </div>
-            <h3 className="text-3xl font-bold tracking-tight">{title}</h3>
-            <p className="mt-2 text-white/80 font-medium">Pasa el mouse para ver más</p>
+            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">{title}</h3>
+            <p className="mt-2 text-white/80 text-sm sm:text-base font-medium">Pasa el mouse para ver más</p>
           </div>
         </div>
 
         {/* Back */}
         <div
-          className="absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-primary text-primary-foreground p-8 flex flex-col justify-center items-center text-center shadow-elevated border-4 border-accent"
+          className="absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-primary text-primary-foreground p-5 sm:p-8 flex flex-col justify-center items-center text-center shadow-elevated border-4 border-accent overflow-hidden"
           style={{ transform: "rotateY(180deg)" }}
         >
-          <div className="h-20 w-20 rounded-full bg-accent/20 flex items-center justify-center mb-6">
-            <Icon className="h-10 w-10 text-accent" />
+          <div className="h-12 w-12 sm:h-16 md:h-20 md:w-20 rounded-full bg-accent/20 flex items-center justify-center mb-3 sm:mb-4 md:mb-6 shrink-0">
+            <Icon className="h-6 w-6 sm:h-8 md:h-10 md:w-10 text-accent" />
           </div>
-          <h3 className="text-2xl font-bold mb-4">{title}</h3>
-          <p className="text-lg leading-relaxed">{text}</p>
+          <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 shrink-0">{title}</h3>
+          <div className="overflow-y-auto w-full px-2 scrollbar-hide">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+              {text}
+            </p>
+          </div>
         </div>
       </motion.div>
     </div>
