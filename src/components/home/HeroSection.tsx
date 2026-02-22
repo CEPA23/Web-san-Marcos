@@ -75,9 +75,9 @@ export function HeroSection() {
             className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-primary-foreground/20 max-w-lg"
           >
             {[
-              { value: "15+", label: "Años de Excelencia" },
+              { value: "30", label: "Años de Excelencia" },
               { value: "4", label: "Sedes" },
-              { value: "1,500+", label: "Estudiantes" },
+              { value: "2,000+", label: "Estudiantes" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="text-3xl font-bold text-accent">{stat.value}</div>
