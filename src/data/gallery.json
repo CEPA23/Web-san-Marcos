@@ -3,5 +3,17 @@
     "title": "Inicio de clases",
     "image": "/images/galeria/inicio.jpg",
     "category": "Eventos"
+  },
+  {
+  "title": "Actuacion Aniversario",
+  "youtubeUrl": "https://www.youtube.com/watch?v=VnqHJohL8w4",
+  "category": "Eventos"
+  },
+  {
+    "title": "Dia de la Peruanidad",
+    "facebookUrl": "https://web.facebook.com/ColegioSanMarcosTrujillo/videos/1052308986887516?locale=es_LA",
+    "image": "/images/galeria/inicio.jpg",
+    "category": "Comunidad"
   }
+
 ]

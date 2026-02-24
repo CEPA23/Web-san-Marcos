@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Target, Eye, Heart, Building, MapPin, Users } from "lucide-react";
@@ -10,19 +10,28 @@ import mision from "@/assets/mision.jpg";
 
 const values = [
   {
-    icon: Target,
-    title: "Excelencia",
-    description: "Perseguimos los más altos estándares en logros académicos y crecimiento personal.",
+    icon: Heart,
+    title: "Formacion Integral Cristiana",
+    description:
+      "Promovemos la vivencia de los valores cristianos como el amor, el respeto, la solidaridad, la honestidad y el servicio, formando ninos con principios firmes que orienten su conducta y su proyecto de vida.",
   },
   {
-    icon: Heart,
-    title: "Integridad",
-    description: "Mantenemos la honestidad, el comportamiento ético y la responsabilidad en todo lo que hacemos.",
+    icon: Target,
+    title: "Excelencia Academica y Aprendizajes Significativos",
+    description:
+      "Fortalecemos el desarrollo de competencias, capacidades y habilidades, asegurando aprendizajes de calidad que permitan a los estudiantes pensar criticamente, resolver problemas y desenvolverse con exito en su entorno.",
   },
   {
     icon: Users,
-    title: "Comunidad",
-    description: "Fomentamos un ambiente de apoyo donde cada miembro pertenece y prospera.",
+    title: "Convivencia Escolar y Bienestar Integral",
+    description:
+      "Garantizamos ambientes seguros, inclusivos y libres de violencia, fomentando la sana convivencia, el respeto mutuo y el desarrollo emocional y social de los estudiantes.",
+  },
+  {
+    icon: Building,
+    title: "Compromiso Educativo y Comunidad",
+    description:
+      "Trabajamos de manera articulada con docentes, familias y comunidad educativa, promoviendo la corresponsabilidad, el acompanamiento permanente y el compromiso con la formacion y el crecimiento de cada nino.",
   },
 ];
 
@@ -41,7 +50,7 @@ const campuses = [
     grades: "Inicial",
     students: "1,500+",
     address: "Mayta Capac #136",
-    description: "Una sede para nuestros pequeños del hogar, con ambientes especializados para ellos.",
+    description: "Una sede para nuestros pequeÃ±os del hogar, con ambientes especializados para ellos.",
   },
   {
     id: "secundaria",
@@ -97,7 +106,7 @@ const FlipCard = ({ title, text, image, icon: Icon }: { title: string; text: str
               <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">{title}</h3>
-            <p className="mt-2 text-white/80 text-sm sm:text-base font-medium">Pasa el mouse para ver más</p>
+            <p className="mt-2 text-white/80 text-sm sm:text-base font-medium">Pasa el mouse para ver mÃ¡s</p>
           </div>
         </div>
 
@@ -170,7 +179,7 @@ const About = () => {
                 title="Nuestra Misión"
                 icon={Target}
                 image={mision}
-                text="Somos una Institución Educativa Privada que brinda las condiciones necesarias a través de los Compromisos de Gestión Escolar, para que todos sus estudiantes desarrollen sus aprendizajes, orientados hacia la excelencia y alcanzando su desarrollo integral en espacios seguros, inclusivos, de sana convivencia y libres de violencia."
+                text="Somos una Institución Educativa Privada que brinda aprendizajes cristianos y pedagógicos de calidad, en coherencia con los Compromisos de Gestión Escolar, para garantizar que todos nuestros estudiantes desarrollen aprendizajes significativos y de excelencia. Promovemos el desarrollo integral de los niños en ambientes seguros, inclusivos, de sana convivencia y libres de violencia, fortaleciendo permanentemente sus capacidades académicas, emocionales y sociales fortaleciendo su amor en Jesús, basadas en los fines y principios de la Educación Peruana."
               />
             </motion.div>
             <motion.div
@@ -182,7 +191,7 @@ const About = () => {
                 title="Nuestra Visión"
                 icon={Eye}
                 image={vision}
-                text="Ser reconocidos en nuestra localidad como una Institución Educativa Privada que contribuye a que todos sus estudiantes puedan desarrollar su potencial desde la primera infancia, formando ciudadanos capaces de resolver con éxito los problemas que se les presente, que asuman una actitud activa, crítica, analítica y responsable frente a los hechos de su entorno."
+                text="Ser una Institución Educativa Privada reconocida por su formación integral y cristiana, que educa a niños con sólidos valores humanos y cristianos, capaces de vivir su fe con coherencia, amor y respeto al prójimo. Aspiramos a formar estudiantes competentes, responsables y comprometidos con la sociedad, que fortalezcan continuamente sus aprendizajes, desarrollen su pensamiento crítico y construyan un proyecto de vida inspirado en los valores del Evangelio."
               />
             </motion.div>
           </div>
@@ -199,10 +208,10 @@ const About = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Nuestros Valores Fundamentales
+              Pilares Importantes
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Los principios que guían todo lo que hacemos en la I.E.P Mayor De San Marcos
+              Ejes que orientan la formacion integral de nuestros estudiantes
             </p>
           </motion.div>
 
@@ -211,7 +220,7 @@ const About = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             {values.map((value) => (
               <motion.div key={value.title} variants={item}>
@@ -247,7 +256,7 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  La Institución Educativa Privada Mayor de San Marcos fue creada en 1996 e inició
+                  La Institución Educativa Privada Mayor de San Marcos fue creada en 1996 e inicia
                   sus actividades en 1997 en Trujillo, ofreciendo los niveles Inicial, Primaria y Secundaria.
                   Desde su primer año destacó por su alta demanda estudiantil, lo que impulsó la expansión de sus instalaciones.
                 </p>
@@ -257,7 +266,7 @@ const About = () => {
                 </p>
                 <p>
                   Actualmente, el consorcio cuenta con siete locales y atiende a más de dos mil estudiantes en educación básica regular,
-                  educación no escolarizada, además de integrar el Instituto Pedagógico Oxford y el Instituto Tecnológico Von Humboldt.
+                  educación no escolarizada, ademáis de integrar el Instituto Pedagógico Oxford y el Instituto Tecnológico Von Humboldt.
                   Su propuesta educativa se basa en una formación integral con programas holísticos orientados a la excelencia académica y al desarrollo
                   de estudiantes exitosos.
                 </p>
@@ -292,7 +301,7 @@ const About = () => {
               Nuestros Campus
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Tres instalaciones modernas diseñadas para experiencias de aprendizaje óptimas
+              Cuatro instalaciones modernas diseÃ±adas para experiencias de aprendizaje Ã³ptimas
             </p>
           </motion.div>
 
@@ -341,3 +350,4 @@ const About = () => {
 };
 
 export default About;
+
