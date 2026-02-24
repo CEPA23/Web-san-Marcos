@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Music2 } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import config from "@/data/config.json";
 
 const contact = config.contact;
@@ -34,6 +34,10 @@ export function Footer() {
                   src={logo} 
                   alt="Logo del colegio"
                   className="h-12 w-12 object-contain"
+                  width={642}
+                  height={798}
+                  loading="lazy"
+                  decoding="async"
                 />  
               </div>
               <div className="flex flex-col">

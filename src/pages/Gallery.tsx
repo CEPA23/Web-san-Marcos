@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Facebook, Play, X } from "lucide-react";
@@ -7,6 +7,8 @@ import galleryData from "@/data/gallery.json";
 type GalleryItem = {
   title: string;
   image?: string;
+  width?: number;
+  height?: number;
   youtubeUrl?: string;
   video?: string;
   facebookUrl?: string;
@@ -21,6 +23,8 @@ type GalleryMedia = {
   type: "image" | "video";
   videoPlatform?: "youtube" | "facebook";
   embedUrl?: string;
+  width: number;
+  height: number;
 };
 
 const container = {
@@ -146,18 +150,78 @@ const youtubeThumbnail = (youtubeId: string) => `https://i.ytimg.com/vi/${youtub
 const youtubeEmbedUrl = (youtubeId: string) =>
   `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`;
 
-const GalleryThumbnail = ({ media }: { media: GalleryMedia }) => {
-  const [hasError, setHasError] = useState(false);
-  const hasImage = Boolean(media.src) && !hasError;
+const resolveDimensions = (
+  width?: number,
+  height?: number,
+  fallback: { width: number; height: number } = { width: 1600, height: 1200 }
+) => {
+  if (typeof width === "number" && width > 0 && typeof height === "number" && height > 0) {
+    return { width, height };
+  }
+  return fallback;
+};
 
-  if (hasImage && media.src) {
+const normalizeImageSrc = (src?: string) => {
+  if (!src) return undefined;
+  const normalized = src.trim().replace(/\\/g, "/");
+  if (!normalized) return undefined;
+  if (/^https?:\/\//i.test(normalized)) return normalized;
+  return encodeURI(normalized);
+};
+
+const imageCandidates = (src?: string) => {
+  const normalized = normalizeImageSrc(src);
+  if (!normalized) return [];
+
+  const [path, query = ""] = normalized.split("?");
+  const hasQuery = query.length > 0;
+  const withQuery = (value: string) => (hasQuery ? `${value}?${query}` : value);
+  const lower = path.toLowerCase();
+
+  if (lower.endsWith(".webp")) {
+    return [withQuery(path), withQuery(path.replace(/\.webp$/i, ".jpg")), withQuery(path.replace(/\.webp$/i, ".jpeg"))];
+  }
+  if (lower.endsWith(".jpg")) {
+    return [withQuery(path), withQuery(path.replace(/\.jpg$/i, ".webp")), withQuery(path.replace(/\.jpg$/i, ".jpeg"))];
+  }
+  if (lower.endsWith(".jpeg")) {
+    return [withQuery(path), withQuery(path.replace(/\.jpeg$/i, ".webp")), withQuery(path.replace(/\.jpeg$/i, ".jpg"))];
+  }
+  if (lower.endsWith(".png")) {
+    return [withQuery(path), withQuery(path.replace(/\.png$/i, ".webp"))];
+  }
+
+  return [withQuery(path)];
+};
+
+const GalleryThumbnail = ({ media }: { media: GalleryMedia }) => {
+  const candidates = useMemo(() => imageCandidates(media.src), [media.src]);
+  const [activeSrcIndex, setActiveSrcIndex] = useState(0);
+  const [hasError, setHasError] = useState(false);
+  const hasImage = candidates.length > 0 && !hasError;
+
+  useEffect(() => {
+    setHasError(false);
+    setActiveSrcIndex(0);
+  }, [media.src]);
+
+  if (hasImage) {
     return (
       <img
-        src={media.src}
+        src={candidates[activeSrcIndex]}
         alt={media.alt}
         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        width={media.width}
+        height={media.height}
         loading="lazy"
-        onError={() => setHasError(true)}
+        decoding="async"
+        onError={() => {
+          if (activeSrcIndex < candidates.length - 1) {
+            setActiveSrcIndex((prev) => prev + 1);
+            return;
+          }
+          setHasError(true);
+        }}
       />
     );
   }
@@ -193,14 +257,19 @@ const Gallery = () => {
         if (youtubeUrl) {
           const youtubeId = extractYouTubeId(youtubeUrl);
           if (youtubeId) {
+            const dimensions = g.image
+              ? resolveDimensions(g.width, g.height, { width: 1280, height: 720 })
+              : { width: 480, height: 360 };
             return [
               {
-                src: g.image || youtubeThumbnail(youtubeId),
+                src: normalizeImageSrc(g.image) ?? youtubeThumbnail(youtubeId),
                 alt: g.title,
                 category,
                 type: "video" as const,
                 videoPlatform: "youtube" as const,
                 embedUrl: youtubeEmbedUrl(youtubeId),
+                width: dimensions.width,
+                height: dimensions.height,
               },
             ];
           }
@@ -209,26 +278,32 @@ const Gallery = () => {
         if (facebookUrl) {
           const embedUrl = buildFacebookEmbedUrl(facebookUrl);
           if (embedUrl) {
+            const dimensions = resolveDimensions(g.width, g.height, { width: 1280, height: 720 });
             return [
               {
-                src: g.image,
+                src: normalizeImageSrc(g.image),
                 alt: g.title,
                 category,
                 type: "video" as const,
                 videoPlatform: "facebook" as const,
                 embedUrl,
+                width: dimensions.width,
+                height: dimensions.height,
               },
             ];
           }
         }
 
         if (g.image) {
+          const dimensions = resolveDimensions(g.width, g.height);
           return [
             {
-              src: g.image,
+              src: normalizeImageSrc(g.image),
               alt: g.title,
               category,
               type: "image" as const,
+              width: dimensions.width,
+              height: dimensions.height,
             },
           ];
         }
@@ -245,6 +320,12 @@ const Gallery = () => {
 
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedMedia, setSelectedMedia] = useState<GalleryMedia | null>(null);
+  const modalCandidates = useMemo(() => imageCandidates(selectedMedia?.src), [selectedMedia?.src]);
+  const [modalSrcIndex, setModalSrcIndex] = useState(0);
+
+  useEffect(() => {
+    setModalSrcIndex(0);
+  }, [selectedMedia?.src]);
 
   const filteredMedia = useMemo(() => {
     if (selectedCategory === "all") return mediaItems;
@@ -363,15 +444,29 @@ const Gallery = () => {
               <X className="h-6 w-6" />
             </button>
             {selectedMedia.type === "image" ? (
-              <motion.img
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                src={selectedMedia.src}
-                alt={selectedMedia.alt}
-                className="max-h-[90vh] max-w-full rounded-lg object-contain"
-                onClick={(e) => e.stopPropagation()}
-              />
+              modalCandidates.length > 0 ? (
+                <motion.img
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  src={modalCandidates[modalSrcIndex]}
+                  alt={selectedMedia.alt}
+                  className="max-h-[90vh] max-w-full rounded-lg object-contain"
+                  width={selectedMedia.width}
+                  height={selectedMedia.height}
+                  decoding="async"
+                  onError={() => {
+                    if (modalSrcIndex < modalCandidates.length - 1) {
+                      setModalSrcIndex((prev) => prev + 1);
+                    }
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              ) : (
+                <div className="flex h-64 w-full max-w-xl items-center justify-center rounded-lg bg-muted text-muted-foreground">
+                  No se pudo cargar la imagen.
+                </div>
+              )
             ) : (
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}

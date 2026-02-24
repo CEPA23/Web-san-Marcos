@@ -1,19 +1,18 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
+import { useDeferredMount } from "@/hooks/use-deferred-mount";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Events from "./pages/Events";
-import News from "./pages/News";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
-import WhatsAppFloat from "@/components/WhatsAppFloat.jsx";
 
-const queryClient = new QueryClient();
+const About = lazy(() => import("./pages/About"));
+const Events = lazy(() => import("./pages/Events"));
+const News = lazy(() => import("./pages/News"));
+const Gallery = lazy(() => import("./pages/Gallery"));
+const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Toaster = lazy(() => import("@/components/ui/toaster").then((module) => ({ default: module.Toaster })));
+const Sonner = lazy(() => import("@/components/ui/sonner").then((module) => ({ default: module.Toaster })));
+const WhatsAppFloat = lazy(() => import("@/components/WhatsAppFloat.jsx"));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -25,13 +24,13 @@ const ScrollToTop = () => {
   return null;
 };
 
+const RouteFallback = () => <div className="min-h-[40vh] bg-background" aria-hidden="true" />;
+
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <HashRouter>
-        <ScrollToTop />
+  <TooltipProvider>
+    <HashRouter>
+      <ScrollToTop />
+      <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
@@ -39,13 +38,26 @@ const App = () => (
           <Route path="/news" element={<News />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </HashRouter>
-      <WhatsAppFloat />
-    </TooltipProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </HashRouter>
+    <DeferredNonCritical />
+  </TooltipProvider>
 );
+
+const DeferredNonCritical = () => {
+  const shouldRender = useDeferredMount(1500);
+
+  if (!shouldRender) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <Toaster />
+      <Sonner />
+      <WhatsAppFloat />
+    </Suspense>
+  );
+};
 
 export default App;

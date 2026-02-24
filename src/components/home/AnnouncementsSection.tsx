@@ -87,7 +87,10 @@ export function AnnouncementsSection() {
                       src={announcement.image}
                       alt={announcement.title}
                       className="h-24 w-full object-cover sm:h-20"
+                      width={1080}
+                      height={1920}
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 )}

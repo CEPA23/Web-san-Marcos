@@ -1,11 +1,13 @@
-﻿import { useState } from "react";
+﻿import { useState, type ComponentType } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Target, Eye, Heart, Building, MapPin, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import historia from "@/assets/historia.jpg";
-import vision from "@/assets/nuestravisio-mision.jpg";
-import mision from "@/assets/mision.jpg";
+import historia from "@/assets/historia.webp";
+import vision from "@/assets/nuestravisio-mision.webp";
+import mision from "@/assets/mision.webp";
+
+type IconComponent = ComponentType<{ className?: string }>;
 
 
 const values = [
@@ -83,7 +85,21 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const FlipCard = ({ title, text, image, icon: Icon }: { title: string; text: string; image: string; icon: any }) => {
+const FlipCard = ({
+  title,
+  text,
+  image,
+  icon: Icon,
+  imageWidth,
+  imageHeight,
+}: {
+  title: string;
+  text: string;
+  image: string;
+  icon: IconComponent;
+  imageWidth: number;
+  imageHeight: number;
+}) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
@@ -100,7 +116,15 @@ const FlipCard = ({ title, text, image, icon: Icon }: { title: string; text: str
       >
         {/* Front */}
         <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden shadow-elevated">
-          <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            width={imageWidth}
+            height={imageHeight}
+            loading="lazy"
+            decoding="async"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col items-center justify-end pb-8 sm:pb-12 text-white p-6">
             <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-4 ring-1 ring-white/30">
               <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
@@ -179,6 +203,8 @@ const About = () => {
                 title="Nuestra Misión"
                 icon={Target}
                 image={mision}
+                imageWidth={645}
+                imageHeight={1024}
                 text="Somos una Institución Educativa Privada que brinda aprendizajes cristianos y pedagógicos de calidad, en coherencia con los Compromisos de Gestión Escolar, para garantizar que todos nuestros estudiantes desarrollen aprendizajes significativos y de excelencia. Promovemos el desarrollo integral de los niños en ambientes seguros, inclusivos, de sana convivencia y libres de violencia, fortaleciendo permanentemente sus capacidades académicas, emocionales y sociales fortaleciendo su amor en Jesús, basadas en los fines y principios de la Educación Peruana."
               />
             </motion.div>
@@ -191,6 +217,8 @@ const About = () => {
                 title="Nuestra Visión"
                 icon={Eye}
                 image={vision}
+                imageWidth={960}
+                imageHeight={640}
                 text="Ser una Institución Educativa Privada reconocida por su formación integral y cristiana, que educa a niños con sólidos valores humanos y cristianos, capaces de vivir su fe con coherencia, amor y respeto al prójimo. Aspiramos a formar estudiantes competentes, responsables y comprometidos con la sociedad, que fortalezcan continuamente sus aprendizajes, desarrollen su pensamiento crítico y construyan un proyecto de vida inspirado en los valores del Evangelio."
               />
             </motion.div>
@@ -282,6 +310,10 @@ const About = () => {
                 src={historia}
                 alt="Aprendizaje en el aula"
                 className="rounded-2xl shadow-elevated"
+                width={1600}
+                height={1118}
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </div>

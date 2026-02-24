@@ -1,8 +1,20 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/main.tsx",
+    "./src/App.tsx",
+    "./src/index.css",
+    "./src/pages/**/*.{ts,tsx}",
+    "./src/components/layout/**/*.{ts,tsx}",
+    "./src/components/home/**/*.{ts,tsx}",
+    "./src/components/WhatsAppFloat.jsx",
+    "./src/components/ui/{button,card,input,textarea,toast,toaster,sonner,tooltip}.tsx",
+    "./src/hooks/use-toast.ts",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -15,6 +27,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
+          "Inter Local",
           "Inter",
           "system-ui",
           "-apple-system",
@@ -24,6 +37,7 @@ export default {
           "sans-serif",
         ],
         heading: [
+          "Inter Local",
           "Inter",
           "system-ui",
           "-apple-system",
@@ -119,5 +133,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 } satisfies Config;

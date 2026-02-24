@@ -124,7 +124,10 @@ const News = () => {
                     src={featuredAnnouncement.image}
                     alt={featuredAnnouncement.title}
                     className="h-56 w-full object-cover"
+                    width={1080}
+                    height={1920}
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               )}
@@ -156,7 +159,10 @@ const News = () => {
                         src={article.image}
                         alt={article.title}
                         className="h-44 w-full object-cover lg:h-full"
+                        width={1080}
+                        height={1920}
                         loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   )}

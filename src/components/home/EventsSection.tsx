@@ -85,7 +85,10 @@ export function EventsSection() {
                         src={event.image}
                         alt={event.title}
                         className="h-32 w-full object-cover"
+                        width={1080}
+                        height={1920}
                         loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   )}
