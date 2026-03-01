@@ -52,7 +52,7 @@ const campuses = [
     grades: "Inicial",
     students: "1,500+",
     address: "Mayta Capac #136",
-    description: "Una sede para nuestros pequeÃ±os del hogar, con ambientes especializados para ellos.",
+    description: "Una sede para nuestros pequeños del hogar, con ambientes especializados para ellos.",
   },
   {
     id: "secundaria",
@@ -130,7 +130,7 @@ const FlipCard = ({
               <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">{title}</h3>
-            <p className="mt-2 text-white/80 text-sm sm:text-base font-medium">Pasa el mouse para ver mÃ¡s</p>
+            <p className="mt-2 text-white/80 text-sm sm:text-base font-medium">Pasa el mouse para ver más</p>
           </div>
         </div>
 
