@@ -333,7 +333,7 @@ const About = () => {
               Nuestros Campus
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Cuatro instalaciones modernas diseÃ±adas para experiencias de aprendizaje Ã³ptimas
+              Cuatro instalaciones modernas diseñadas para experiencias de aprendizaje óptimas
             </p>
           </motion.div>
 
