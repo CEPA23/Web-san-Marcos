@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { PageHero } from "@/components/common/PageHero";
 import { Layout } from "@/components/layout/Layout";
 import { Facebook, Play, X } from "lucide-react";
 import galleryData from "@/data/gallery.json";
@@ -334,16 +335,10 @@ const Gallery = () => {
 
   return (
     <Layout>
-      <section className="section-padding bg-secondary">
-        <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">Galeria Multimedia</h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Explora fotos y videos de YouTube de nuestros campus, aulas, eventos y actividades.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Galeria Multimedia"
+        description="Explora fotos y videos de nuestros campus, aulas, eventos y actividades a través de una experiencia más clara y visual."
+      />
 
       <section className="section-padding bg-background">
         <div className="container-custom">
@@ -356,10 +351,10 @@ const Gallery = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory("all")}
-              className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-full border px-4 py-2.5 text-sm font-semibold transition-all duration-200 ${
                 selectedCategory === "all"
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-background text-foreground hover:bg-secondary"
+                  ? "border-primary bg-primary text-primary-foreground shadow-card"
+                  : "border-border/80 bg-card/80 text-foreground hover:-translate-y-0.5 hover:bg-secondary hover:shadow-card"
               }`}
             >
               Todo
@@ -371,10 +366,10 @@ const Gallery = () => {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`rounded-full border px-4 py-2.5 text-sm font-semibold transition-all duration-200 ${
                     isActive
-                      ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border bg-background text-foreground hover:bg-secondary"
+                      ? "border-primary bg-primary text-primary-foreground shadow-card"
+                      : "border-border/80 bg-card/80 text-foreground hover:-translate-y-0.5 hover:bg-secondary hover:shadow-card"
                   }`}
                 >
                   {cat}

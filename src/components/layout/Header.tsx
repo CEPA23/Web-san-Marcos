@@ -1,6 +1,6 @@
 ﻿import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { ExternalLink, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.webp";
 
@@ -61,8 +61,20 @@ export function Header() {
             <Button variant="outline" size="sm" asChild>
               <Link to="/contact">Contactanos</Link>
             </Button>
-            <Button variant="hero" size="sm" asChild>
-              <Link to="/contact">Inscribete</Link>
+            <Button
+              variant="hero"
+              size="sm"
+              className="rounded-full px-5 text-sm font-semibold tracking-[0.02em]"
+              asChild
+            >
+              <a
+                href="https://sistema-colegio-6irw.onrender.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Intranet
+                <ExternalLink className="h-4 w-4" />
+              </a>
             </Button>
           </div>
 
@@ -107,10 +119,21 @@ export function Header() {
                     Contacto
                   </Link>
                 </Button>
-                <Button variant="hero" size="sm" className="flex-1" asChild>
-                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    Inscribete
-                  </Link>
+                <Button
+                  variant="hero"
+                  size="sm"
+                  className="flex-1 rounded-full text-sm font-semibold tracking-[0.02em]"
+                  asChild
+                >
+                  <a
+                    href="https://sistema-colegio-6irw.onrender.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Intranet
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
                 </Button>
               </div>
             </div>

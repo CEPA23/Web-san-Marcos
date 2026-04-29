@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { PageHero } from "@/components/common/PageHero";
 import { Layout } from "@/components/layout/Layout";
 import { Calendar, Clock3, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -65,20 +66,10 @@ const Events = () => {
 
   return (
     <Layout>
-      <section className="section-padding bg-secondary">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">Eventos Escolares</h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Mantente conectado con los proximos eventos, actividades y celebraciones.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Eventos Escolares"
+        description="Mantente conectado con los próximos eventos, actividades y celebraciones que marcan el ritmo de nuestra comunidad educativa."
+      />
 
       <section className="section-padding bg-background">
         <div className="container-custom">
@@ -90,10 +81,10 @@ const Events = () => {
                   key={category}
                   type="button"
                   onClick={() => setSelectedCategory(category)}
-                  className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`rounded-full border px-4 py-2.5 text-sm font-semibold transition-all duration-200 ${
                     isActive
-                      ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border bg-background text-foreground hover:bg-secondary"
+                      ? "border-primary bg-primary text-primary-foreground shadow-card"
+                      : "border-border/80 bg-card/80 text-foreground hover:-translate-y-0.5 hover:bg-secondary hover:shadow-card"
                   }`}
                 >
                   {category}

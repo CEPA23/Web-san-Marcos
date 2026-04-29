@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { PageHero } from "@/components/common/PageHero";
 import { Layout } from "@/components/layout/Layout";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -125,8 +126,12 @@ const Contact = () => {
 
   return (
     <Layout>
+      <PageHero
+        title="Contáctanos"
+        description="¿Tienes preguntas sobre admisiones, programas o visitas a nuestros campus? Estamos aquí para ayudarte con una atención cercana y clara."
+      />
       {/* Hero */}
-      <section className="section-padding bg-secondary">
+      <section className="hidden">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

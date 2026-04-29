@@ -1,5 +1,6 @@
 ﻿import { useState, type ComponentType } from "react";
 import { motion } from "framer-motion";
+import { PageHero } from "@/components/common/PageHero";
 import { Layout } from "@/components/layout/Layout";
 import { Target, Eye, Heart, Building, MapPin, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -157,24 +158,10 @@ const FlipCard = ({
 const About = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="section-padding bg-secondary">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Acerca de la I.E.P Mayor De San Marcos
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Desde 1997, La I.E.P Mayor De San Marcos se ha dedicado a formar jóvenes mentes
-              y preparar estudiantes para una vida de aprendizaje y liderazgo.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Acerca de la I.E.P Mayor De San Marcos"
+        description="Desde 1997, la I.E.P Mayor De San Marcos se ha dedicado a formar jóvenes mentes y preparar estudiantes para una vida de aprendizaje, liderazgo y valores."
+      />
 
       {/* Mission & Vision */}
       <section className="section-padding bg-background overflow-hidden">
