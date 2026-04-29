@@ -9,6 +9,7 @@ export default {
     "./src/App.tsx",
     "./src/index.css",
     "./src/pages/**/*.{ts,tsx}",
+    "./src/components/common/**/*.{ts,tsx}",
     "./src/components/layout/**/*.{ts,tsx}",
     "./src/components/home/**/*.{ts,tsx}",
     "./src/components/WhatsAppFloat.jsx",

@@ -1,4 +1,4 @@
-﻿import { useState, type ComponentType } from "react";
+import { useState, type ComponentType } from "react";
 import { motion } from "framer-motion";
 import { PageHero } from "@/components/common/PageHero";
 import { Layout } from "@/components/layout/Layout";
@@ -9,7 +9,6 @@ import vision from "@/assets/nuestravisio-mision.webp";
 import mision from "@/assets/mision.webp";
 
 type IconComponent = ComponentType<{ className?: string }>;
-
 
 const values = [
   {
@@ -105,7 +104,7 @@ const FlipCard = ({
 
   return (
     <div
-      className="relative h-[480px] sm:h-[420px] md:h-[450px] w-full perspective-1000 cursor-pointer group"
+      className="group relative h-[480px] w-full cursor-pointer perspective-1000 sm:h-[420px] md:h-[450px]"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
       onClick={() => setIsFlipped(!isFlipped)}
@@ -116,7 +115,7 @@ const FlipCard = ({
         transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
       >
         {/* Front */}
-        <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden shadow-elevated">
+        <div className="absolute inset-0 h-full w-full overflow-hidden rounded-[28px] border border-white/60 bg-card backface-hidden shadow-elevated">
           <img
             src={image}
             alt={title}
@@ -126,26 +125,36 @@ const FlipCard = ({
             loading="lazy"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col items-center justify-end pb-8 sm:pb-12 text-white p-6">
-            <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-4 ring-1 ring-white/30">
-              <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.06)_0%,rgba(15,23,42,0.18)_34%,rgba(15,23,42,0.88)_100%)] p-6 text-white sm:p-8">
+            <div className="flex h-full flex-col justify-between">
+              <div className="h-1.5 w-20 rounded-full gold-gradient" />
+              <div className="flex flex-col items-center justify-end pb-2 text-center sm:pb-4">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/20 backdrop-blur-md ring-1 ring-white/30 sm:h-16 sm:w-16">
+                  <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{title}</h3>
+                <div className="mt-4 h-1 w-16 rounded-full gold-gradient" />
+                <p className="mt-3 text-sm font-medium text-white/80 sm:text-base">
+                  Pasa el mouse para ver mas
+                </p>
+              </div>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">{title}</h3>
-            <p className="mt-2 text-white/80 text-sm sm:text-base font-medium">Pasa el mouse para ver más</p>
           </div>
         </div>
 
         {/* Back */}
         <div
-          className="absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-primary text-primary-foreground p-5 sm:p-8 flex flex-col justify-center items-center text-center shadow-elevated border-4 border-accent overflow-hidden"
+          className="absolute inset-0 flex h-full w-full flex-col justify-center overflow-hidden rounded-[28px] border border-accent/50 bg-primary p-5 text-center text-primary-foreground shadow-elevated backface-hidden sm:p-8"
           style={{ transform: "rotateY(180deg)" }}
         >
-          <div className="h-12 w-12 sm:h-16 md:h-20 md:w-20 rounded-full bg-accent/20 flex items-center justify-center mb-3 sm:mb-4 md:mb-6 shrink-0">
-            <Icon className="h-6 w-6 sm:h-8 md:h-10 md:w-10 text-accent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_36%),linear-gradient(145deg,rgba(255,255,255,0.03),rgba(255,255,255,0))]" />
+          <div className="relative mx-auto mb-3 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/20 sm:mb-4 sm:h-16 sm:w-16 md:mb-6 md:h-20 md:w-20">
+            <Icon className="h-6 w-6 text-accent sm:h-8 sm:w-8 md:h-10 md:w-10" />
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 shrink-0">{title}</h3>
-          <div className="overflow-y-auto w-full px-2 scrollbar-hide">
-            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+          <h3 className="relative mb-2 shrink-0 text-xl font-bold sm:mb-4 sm:text-2xl">{title}</h3>
+          <div className="relative mx-auto mb-4 h-1 w-16 rounded-full gold-gradient" />
+          <div className="relative w-full overflow-y-auto px-2 scrollbar-hide">
+            <p className="text-sm leading-relaxed text-primary-foreground/90 sm:text-base md:text-lg">
               {text}
             </p>
           </div>
@@ -161,6 +170,10 @@ const About = () => {
       <PageHero
         title="Acerca de la I.E.P Mayor De San Marcos"
         description="Desde 1997, la I.E.P Mayor De San Marcos se ha dedicado a formar jóvenes mentes y preparar estudiantes para una vida de aprendizaje, liderazgo y valores."
+        eyebrow="Identidad institucional"
+        imageSrc={historia}
+        imageAlt="Estudiantes y docentes de la I.E.P Mayor de San Marcos"
+        imagePosition="bottom"
       />
 
       {/* Mission & Vision */}
@@ -180,35 +193,43 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <FlipCard
-                title="Nuestra Misión"
-                icon={Target}
-                image={mision}
-                imageWidth={645}
-                imageHeight={1024}
-                text="Somos una Institución Educativa Privada que brinda aprendizajes cristianos y pedagógicos de calidad, en coherencia con los Compromisos de Gestión Escolar, para garantizar que todos nuestros estudiantes desarrollen aprendizajes significativos y de excelencia. Promovemos el desarrollo integral de los niños en ambientes seguros, inclusivos, de sana convivencia y libres de violencia, fortaleciendo permanentemente sus capacidades académicas, emocionales y sociales fortaleciendo su amor en Jesús, basadas en los fines y principios de la Educación Peruana."
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <FlipCard
-                title="Nuestra Visión"
-                icon={Eye}
-                image={vision}
-                imageWidth={960}
-                imageHeight={640}
-                text="Ser una Institución Educativa Privada reconocida por su formación integral y cristiana, que educa a niños con sólidos valores humanos y cristianos, capaces de vivir su fe con coherencia, amor y respeto al prójimo. Aspiramos a formar estudiantes competentes, responsables y comprometidos con la sociedad, que fortalezcan continuamente sus aprendizajes, desarrollen su pensamiento crítico y construyan un proyecto de vida inspirado en los valores del Evangelio."
-              />
-            </motion.div>
+          <div className="rounded-[32px] border border-border/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.94)_0%,rgba(248,243,234,0.82)_100%)] p-6 shadow-card sm:p-8 lg:p-10">
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-1.5 w-20 rounded-full gold-gradient" />
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/70">
+                Mision y vision
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <FlipCard
+                  title="Nuestra Misión"
+                  icon={Target}
+                  image={mision}
+                  imageWidth={645}
+                  imageHeight={1024}
+                  text="Somos una Institución Educativa Privada que brinda aprendizajes cristianos y pedagógicos de calidad, en coherencia con los Compromisos de Gestión Escolar, para garantizar que todos nuestros estudiantes desarrollen aprendizajes significativos y de excelencia. Promovemos el desarrollo integral de los niños en ambientes seguros, inclusivos, de sana convivencia y libres de violencia, fortaleciendo permanentemente sus capacidades académicas, emocionales y sociales fortaleciendo su amor en Jesús, basadas en los fines y principios de la Educación Peruana."
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <FlipCard
+                  title="Nuestra Visión"
+                  icon={Eye}
+                  image={vision}
+                  imageWidth={960}
+                  imageHeight={640}
+                  text="Ser una Institución Educativa Privada reconocida por su formación integral y cristiana, que educa a niños con sólidos valores humanos y cristianos, capaces de vivir su fe con coherencia, amor y respeto al prójimo. Aspiramos a formar estudiantes competentes, responsables y comprometidos con la sociedad, que fortalezcan continuamente sus aprendizajes, desarrollen su pensamiento crítico y construyan un proyecto de vida inspirado en los valores del Evangelio."
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -239,15 +260,16 @@ const About = () => {
           >
             {values.map((value) => (
               <motion.div key={value.title} variants={item}>
-                <Card className="h-full text-center card-hover">
-                  <CardContent className="p-8">
-                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-accent/20 mb-6">
+                <Card className="card-hover h-full border-border/70 bg-card/95 shadow-card">
+                  <CardContent className="p-8 sm:p-9">
+                    <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/15 ring-1 ring-accent/20">
                       <value.icon className="h-8 w-8 text-accent" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3">
+                    <h3 className="mb-4 max-w-md text-xl font-semibold leading-snug text-foreground">
                       {value.title}
                     </h3>
-                    <p className="text-muted-foreground">{value.description}</p>
+                    <div className="mb-5 h-px w-20 bg-gradient-to-r from-accent/80 to-transparent" />
+                    <p className="text-base leading-7 text-muted-foreground">{value.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -269,7 +291,7 @@ const About = () => {
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
                 Nuestra Historia
               </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-5 text-base leading-8 text-muted-foreground">
                 <p>
                   La Institución Educativa Privada Mayor de San Marcos fue creada en 1996 e inicia
                   sus actividades en 1997 en Trujillo, ofreciendo los niveles Inicial, Primaria y Secundaria.
@@ -296,7 +318,7 @@ const About = () => {
               <img
                 src={historia}
                 alt="Aprendizaje en el aula"
-                className="rounded-2xl shadow-elevated"
+                className="rounded-[28px] border border-border/60 shadow-elevated"
                 width={1600}
                 height={1118}
                 loading="lazy"
@@ -333,23 +355,24 @@ const About = () => {
           >
             {campuses.map((campus) => (
               <motion.div key={campus.name} variants={item}>
-                <Card className="h-full card-hover">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Card className="card-hover h-full border-border/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(248,243,234,0.85)_100%)] shadow-card">
+                  <CardContent className="p-6 sm:p-7">
+                    <div className="mb-5 flex items-center gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/10">
                         <Building className="h-6 w-6 text-primary" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-foreground">
                           {campus.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
-                          Grados {campus.grades}
+                        <p className="mt-1 text-sm font-medium uppercase tracking-[0.16em] text-primary/55">
+                          {campus.grades}
                         </p>
                       </div>
                     </div>
-                    <p className="text-muted-foreground mb-4">{campus.description}</p>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                    <p className="mb-5 text-base leading-7 text-muted-foreground">{campus.description}</p>
+                    <div className="mb-3 h-px w-full bg-gradient-to-r from-border via-border/60 to-transparent" />
+                    <div className="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
                       <Users className="h-4 w-4 text-accent" />
                       <span>{campus.students} Estudiantes</span>
                     </div>
@@ -369,4 +392,3 @@ const About = () => {
 };
 
 export default About;
-
